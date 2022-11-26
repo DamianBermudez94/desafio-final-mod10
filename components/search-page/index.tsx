@@ -44,7 +44,8 @@ export const SearchPage: React.FC<Props> = ({ children, query }) => {
   function generatePages() {
     //checkeo el total de productos
     const total = data?.pagination.total;
-
+    console.log("Soy el total",total);
+    
     //obtengo el total de paginas dividiendo por 3 productos por pagina
     const pages = Math.ceil(total / 3);
     const result = [];
