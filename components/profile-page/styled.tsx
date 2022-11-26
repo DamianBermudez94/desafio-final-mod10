@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const ProfilePageWrapper = styled.div`
   margin: 0 auto;
   display: flex;
-  max-width: 480px;
+  max-width: 485px;
   flex-direction: column;
   gap: 16px;
   margin-bottom: 50px;
