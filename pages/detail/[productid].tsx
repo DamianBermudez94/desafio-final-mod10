@@ -1,3 +1,5 @@
+
+
 import { Layout } from "components/layout";
 import { ProductDetailPage } from "components/product-detail-page";
 import { fetchApi } from "lib/api";
@@ -51,3 +53,5 @@ export async function getStaticProps(context: GetStaticPropsContext) {
 }
 
 export default Search;
+
+//https://dwf-m9-desafio-final.vercel.app/api/products/all/id
