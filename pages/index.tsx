@@ -1,6 +1,6 @@
 import { HomePage } from "components/home-page";
 import { Layout } from "components/layout";
-import { fetchApi } from "lib/api";
+import { fetchApi } from "lib/api/api";
 import type { GetStaticPropsContext, NextPage } from "next";
 import Head from "next/head";
 

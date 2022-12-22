@@ -1,5 +1,5 @@
 import { ProductCard } from "components/product-card";
-import { fetchApi } from "lib/api";
+import { fetchApi } from "lib/api/api";
 import React, { useState } from "react";
 import useSWR from "swr";
 import { Spinner } from "ui/loader";
@@ -23,9 +23,10 @@ export const SearchPage: React.FC<Props> = ({ children, query }) => {
     "/search?q=" + query + "&offset=" + offset + "&limit=3",
     fetchApi
   );
+console.log("soy la api",fetchApi);
 
   const results = data?.results;
-  console.log(data);
+  console.log("soy la data",data);
 
   //recibo el numero de pag
   function goToPage(page: number) {
@@ -43,7 +44,7 @@ export const SearchPage: React.FC<Props> = ({ children, query }) => {
   }
   function generatePages() {
     //checkeo el total de productos
-    const total = data?.pagination.total;
+    const total = data?.pagination;
     console.log("Soy el total",total);
     
     //obtengo el total de paginas dividiendo por 3 productos por pagina
@@ -81,7 +82,7 @@ export const SearchPage: React.FC<Props> = ({ children, query }) => {
                     productId={item.objectID}
                     url={item.Images[0]?.url}
                     title={item.Name}
-                    price={item.Price}
+                    price={item.unit_price}
                   />
                 );
               })

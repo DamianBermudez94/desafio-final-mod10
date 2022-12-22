@@ -1,4 +1,4 @@
-import { getOrderUrl, getSettedToken } from "lib/api";
+import { getOrderUrl, getSettedToken } from "lib/api/api";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { PrimaryButtonBig } from "ui/buttons";
@@ -53,7 +53,7 @@ export const ProductDetailPage: React.FC<Props> = (props) => {
             <ProductDetailTitle style={{ margin: "0" }}>
               {props.data.Name}
             </ProductDetailTitle>
-            <SubTitle style={{ margin: "0" }}>${props.data.Price}</SubTitle>
+            <SubTitle style={{ margin: "0" }}>${props.data.unit_price}</SubTitle>
             <DetailButtonWrapper>
               <PrimaryButtonBig
                 onClick={() => {

@@ -1,9 +1,9 @@
 import { ReactElement } from "react";
 import Logo from "./logo.svg";
-import WhiteLogo from "./logo-principal.svg";
+import WhiteLogo from "./interior_decorating.svg";
 import Burguer from "./burger.svg";
-import { FiTwitter } from "react-icons/fi";
-import { AiOutlineInstagram } from "react-icons/ai";
+import InstaIcon  from "./Instagram_icon.svg";
+import FacebooIcon from "./facebook-icon.svg";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { BaseIcon } from "./styled";
 
@@ -32,17 +32,17 @@ export function BurguerIcon({ className }: Props): ReactElement {
     </BaseIcon>
   );
 }
-export function TwitterIcon({ className }: Props): ReactElement {
+export function InstagramLogoIcon({ className }: Props): ReactElement {
   return (
     <BaseIcon>
-      <FiTwitter className={className}></FiTwitter>
+      <InstaIcon className={className}></InstaIcon>
     </BaseIcon>
   );
 }
-export function InstagramIcon({ className }: Props): ReactElement {
+export function FacebookLogoIcon({ className }: Props): ReactElement {
   return (
     <BaseIcon>
-      <AiOutlineInstagram className={className}></AiOutlineInstagram>
+      <FacebooIcon className={className}></FacebooIcon>
     </BaseIcon>
   );
 }

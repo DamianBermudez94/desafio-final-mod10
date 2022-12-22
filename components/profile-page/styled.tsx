@@ -14,7 +14,7 @@ export const ProfilePageWrapper = styled.div`
     max-width: 900px;
     display: grid;
     grid-template-columns: 2fr 3fr;
-    height: calc(100vh - 314px);
+    height: calc(100vh - 200px);
     gap: 77px;
   }
 `;

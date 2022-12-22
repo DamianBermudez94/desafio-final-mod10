@@ -1,5 +1,5 @@
 import { ProfileForm } from "components/profile-form";
-import { fetchApi } from "lib/api";
+import { fetchApi } from "lib/api/api";
 import React from "react";
 import useSWR from "swr";
 import { Title } from "ui/text";

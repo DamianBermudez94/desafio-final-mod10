@@ -1,12 +1,12 @@
 import { LoginForm } from "components/login-form";
 import { useCheckToken, userMailState } from "hooks/hooks";
-import { getAuth, getToken } from "lib/api";
+import { getAuth, getToken } from "lib/api/api";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { useRecoilState } from "recoil";
 import { Spinner } from "ui/loader";
 import { Title } from "ui/text";
-import { LoginLoadersWrapper, LoginPageWrapper } from "./styled";
+import { LoginLoadersWrapper, LoginPageWrapper,LoginPageBody } from "./styled";
 
 type Props = {
   children?: React.ReactNode;
@@ -45,7 +45,7 @@ export const LoginPage: React.FC<Props> = ({ children }) => {
   return (
     <>
       {token ? (
-        <div>Ya tienes una sesión activa</div>
+        <LoginPageBody>Ya tienes una sesión activa</LoginPageBody>
       ) : (
         <LoginPageWrapper>
           {!showCodePage ? <Title>Ingresar</Title> : <Title>Código</Title>}

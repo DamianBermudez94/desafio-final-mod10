@@ -1,7 +1,8 @@
 import { FeaturedSection } from "components/featured-section";
 import { MainSection } from "components/main-section";
+
 import React from "react";
-import { BackgroundDiv, ContentDiv, HomeWrapper } from "./styled";
+import { BackgroundDiv, ContentDiv, HomeWrapper,ImageBackground } from "./styled";
 
 type Props = {
   children?: React.ReactNode;
@@ -11,7 +12,10 @@ export const HomePage: React.FC<Props> = ({ children, data }) => {
   return (
     <HomeWrapper>
       <BackgroundDiv>
-       
+        <ImageBackground
+          src={"/background.jpg"}
+          alt="background-image"
+        ></ImageBackground>
       </BackgroundDiv>
       <ContentDiv>
         <MainSection></MainSection>

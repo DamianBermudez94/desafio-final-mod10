@@ -1,8 +1,6 @@
-
-
 import { Layout } from "components/layout";
 import { ProductDetailPage } from "components/product-detail-page";
-import { fetchApi } from "lib/api";
+import { fetchApi } from "lib/api/api";
 import type { GetStaticPropsContext, NextPage } from "next";
 import Head from "next/head";
 
@@ -24,6 +22,8 @@ export async function getStaticPaths() {
   const res = await fetch(
     "https://dwf-m9-desafio-final.vercel.app/api/products/all/id"
   );
+  console.log("soy la respuesta",res);
+  
   const json = await res.json();
   const paths = json.map((item: any) => {
     return { params: { productId: item } };
@@ -53,5 +53,3 @@ export async function getStaticProps(context: GetStaticPropsContext) {
 }
 
 export default Search;
-
-//https://dwf-m9-desafio-final.vercel.app/api/products/all/id

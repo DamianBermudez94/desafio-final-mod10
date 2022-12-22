@@ -1,5 +1,19 @@
 import styled from "styled-components";
 
+export const ImageBackground = styled.img`
+  object-fit: cover;
+  width:100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+
+`;
+
 export const HomeWrapper = styled.div`
   position: relative;
   width: 100%;

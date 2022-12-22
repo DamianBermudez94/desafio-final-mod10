@@ -1,17 +1,16 @@
 import { SearchForm } from "components/seacrh-form";
 import { SideBar } from "components/side-bar";
+import {WhiteLogoIcon} from "ui/icons"
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
-import { ArrowDownIcon, BurguerIcon, WhiteLogoIcon } from "ui/icons";
-import { LargeText } from "ui/text";
+
+
 import {
-  ArrowWrapper,
   BaseHeader,
   BurgerWrapper,
   FormWrapper,
   IconContainer,
-  MenuButtonWrapper,
 } from "./styled";
 
 type Props = {
@@ -33,33 +32,13 @@ export const Header: React.FC<Props> = (props) => {
     <BaseHeader style={{ position: props.sticky ? "sticky" : "static" }}>
       <Link href="/">
         <IconContainer>
-          <WhiteLogoIcon />
+        <WhiteLogoIcon></WhiteLogoIcon>
         </IconContainer>
       </Link>
       <BurgerWrapper onClick={toggleMenu}>
-        <BurguerIcon></BurguerIcon>
+     
       </BurgerWrapper>
-      <MenuButtonWrapper onClick={toggleMenu}>
-        <LargeText>Menu</LargeText>
-        {flag ? (
-          <ArrowWrapper
-            style={{
-              transform: `rotate(-180deg)`,
-              transition: "0.6s ease-in-out",
-            }}
-          >
-            <ArrowDownIcon></ArrowDownIcon>
-          </ArrowWrapper>
-        ) : (
-          <ArrowWrapper
-            style={{
-              transition: "0.6s ease-in-out",
-            }}
-          >
-            <ArrowDownIcon></ArrowDownIcon>
-          </ArrowWrapper>
-        )}
-      </MenuButtonWrapper>
+    
       {props.form ? (
         <FormWrapper>
           <SearchForm submit={handleSubmit} type="secondary"></SearchForm>

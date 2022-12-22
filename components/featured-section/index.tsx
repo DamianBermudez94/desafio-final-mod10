@@ -22,7 +22,8 @@ export const FeaturedSection: React.FC<Props> = ({ children, data }) => {
                   productId={product.objectID}
                   url={product.Images[0]?.url}
                   title={product.Name}
-                  price={product.Price}
+                  price={product.unit_price}
+                  
                 ></ProductCard>
               );
             })

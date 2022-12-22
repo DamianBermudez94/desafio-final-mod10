@@ -1,4 +1,4 @@
-import { patchUserData } from "lib/api";
+import { patchUserData } from "lib/api/api";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";

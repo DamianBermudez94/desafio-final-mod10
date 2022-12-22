@@ -1,11 +1,12 @@
 import Link from "next/link";
 import React from "react";
-import { InstagramIcon, TwitterIcon, WhiteLogoIcon } from "ui/icons";
+import { InstagramLogoIcon, FacebookLogoIcon, WhiteLogoIcon } from "ui/icons";
 import { BodyText, LargeTextBold } from "ui/text";
 import {
   FooterWrapper,
   SocialMediaLinkWrapper,
   SocialMediaWrapper,
+  StyledLink
 } from "./styled";
 
 export const Footer: React.FC = () => {
@@ -14,18 +15,18 @@ export const Footer: React.FC = () => {
       <WhiteLogoIcon></WhiteLogoIcon>
       <SocialMediaWrapper>
         <LargeTextBold>Redes</LargeTextBold>
-        <Link href={"/"}>
+        <StyledLink  href={"https://damianbermudezdev.es/"} target={"_blank"}>
           <SocialMediaLinkWrapper>
-            <TwitterIcon></TwitterIcon>
-            <BodyText>Twitter</BodyText>
+            <FacebookLogoIcon></FacebookLogoIcon>
+            <BodyText>Facebook</BodyText>
           </SocialMediaLinkWrapper>
-        </Link>
-        <Link href={"/"}>
+        </StyledLink>
+        <StyledLink href={"https://damianbermudezdev.es/"} target={"_blank"}>
           <SocialMediaLinkWrapper>
-            <InstagramIcon></InstagramIcon>
+            <InstagramLogoIcon></InstagramLogoIcon>
             <BodyText>Instagram</BodyText>
           </SocialMediaLinkWrapper>
-        </Link>
+        </StyledLink>
       </SocialMediaWrapper>
     </FooterWrapper>
   );

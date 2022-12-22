@@ -14,3 +14,13 @@ export const LoginLoadersWrapper = styled.div`
   display: flex;
   justify-content: center;
 `;
+
+export const LoginPageBody = styled.div`
+  width: 100%;
+  height: 249px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+`;

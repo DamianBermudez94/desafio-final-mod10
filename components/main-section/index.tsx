@@ -19,7 +19,7 @@ export const MainSection: React.FC<Props> = ({ children }) => {
     <MainSectionWrapper>
       <TitleWrapper>
         <Title>
-          Compralo <br></br> Mueblería
+          Deco <br></br>&<br></br>Home
         </Title>
         <SearchForm type="primary" submit={handleSubmit}></SearchForm>
       </TitleWrapper>
