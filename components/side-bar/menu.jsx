@@ -72,7 +72,8 @@ import {
 export default Navbar
 
 const NavContainer = styled.nav`
-  
+ 
+  margin: 40px;
   padding: .4rem;
   display: flex;
   justify-content: space-between;
@@ -95,17 +96,22 @@ const NavContainer = styled.nav`
       
     }
     @media(min-width: 960px){
-      position: initial;
-      margin: 10px;
+      width: 100%;
+      position: inherit;
+     
+      margin: auto;
       padding: 10px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      display: grid;
+      grid: repeat(1, 60px) / auto-flow 100px;
       a{
         font-size: 1rem;
         color: #333;
-        display: inline;
-        margin: 10px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 12px;
+       
+    
+        
       }
     
 
@@ -128,7 +134,7 @@ const NavContainer = styled.nav`
       font-size: 2rem;
       margin-top: 1rem;
       color: white;
-      margin: auto;
+      
     }
   }
   .burguer{

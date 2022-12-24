@@ -2,18 +2,12 @@ import styled from "styled-components";
 
 
 export const SideBarContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
   
-  @media screen and (min-width: 960px) {
-    position: static;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    background-color: red;
-    
- 
- }
+
 `;
 
 export const UserSessionWrapper = styled.div`

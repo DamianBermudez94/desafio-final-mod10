@@ -10,7 +10,7 @@ export const FooterWrapper = styled.footer`
   justify-content: space-around;
   align-items: flex-start;
   padding: 30px;
-  margin: 0 auto;
+
   ;
   @media screen and (min-width: 960px) {
     height: 180px;
@@ -19,33 +19,30 @@ export const FooterWrapper = styled.footer`
   }
 `;
 export const SocialMediaWrapper = styled.div`
-  color: #fff;
-  width: 100%;
-  height: 80px;
-  display: flex;
-  flex-direction: column;
-  justify-items: center;
-  align-items: flex-start;
+    color: rgb(255, 255, 255);
+    width: 100%;
+   
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   @media screen and (min-width: 960px) {
-    max-width: 180px;
+    width: 100%;
+    height: 100%;
     align-items: center;
+    flex-direction: row;
   }
 `;
 
-export const SocialMediaLinkWrapper = styled.div`
-  cursor: pointer;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  @media screen and (min-width: 744px) {
-    justify-content: center;
-  }
-`;
+
 
 export const StyledLink = styled(Link)`
   color: Blue;
   text-decoration: none;
+  display: flex;
+  justify-items: space-between;
+  margin: 0 5px;
+  
+
  
 
 `;
