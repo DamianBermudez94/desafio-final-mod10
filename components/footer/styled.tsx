@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const FooterWrapper = styled.footer`
   width: 100%;
-  height: 300px;
+  height: 250px;
   background-color: #313638;
   display: flex;
   flex-direction: column;
@@ -13,36 +13,32 @@ export const FooterWrapper = styled.footer`
 
   ;
   @media screen and (min-width: 960px) {
-    height: 180px;
-    flex-direction: row;
+
+
+    justify-content: space-between;
   
   }
 `;
 export const SocialMediaWrapper = styled.div`
     color: rgb(255, 255, 255);
     width: 100%;
-   
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-  @media screen and (min-width: 960px) {
-    width: 100%;
-    height: 100%;
-    align-items: center;
-    flex-direction: row;
-  }
+   
+ 
 `;
 
-
+export const FacebookLogoIcon = styled.p`
+  color: rgb(255, 255, 255);
+  margin: 10px;
+`;
 
 export const StyledLink = styled(Link)`
   color: Blue;
   text-decoration: none;
   display: flex;
   justify-items: space-between;
-  margin: 0 5px;
   
-
- 
 
 `;

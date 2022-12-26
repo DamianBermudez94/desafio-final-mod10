@@ -3,7 +3,7 @@ import Logo from "./logo.svg";
 import WhiteLogo from "./interior_decorating.svg";
 import Burguer from "./burger.svg";
 import InstaIcon  from "./Instagram_icon.svg";
-import FacebooIcon from "./facebook-icon.svg";
+import FacebooIcon from "./facebook_icon.svg";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { BaseIcon } from "./styled";
 

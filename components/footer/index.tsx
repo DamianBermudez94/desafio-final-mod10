@@ -1,4 +1,4 @@
-import Link from "next/link";
+
 import React from "react";
 import { InstagramLogoIcon, FacebookLogoIcon, WhiteLogoIcon } from "ui/icons";
 import { BodyText, LargeTextBold } from "ui/text";
