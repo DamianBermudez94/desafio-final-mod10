@@ -20,7 +20,7 @@ const Search: NextPage = ({ data, error }: any) => {
 
 export async function getStaticPaths() {
   const res = await fetch(
-    "https://dwf-m9-desafio-final.vercel.app/api/products/all/"
+    "https://dwf-m9-desafio-final.vercel.app/api/products/all/id"
   );
   const json = await res.json();
   const paths = json.map((item: any) => {
