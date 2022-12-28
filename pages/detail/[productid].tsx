@@ -22,10 +22,15 @@ export async function getStaticPaths() {
   const res = await fetch(
     "https://dwf-m9-desafio-final.vercel.app/api/products/all/id"
   );
+  console.log("soy la respuesta",res);
+  
   const json = await res.json();
+  console.log("soy la respues json",json);
+  
   const paths = json.map((item: any) => {
     return { params: { productId: item } };
   });
+console.log("soy el paths",paths);
 
   return {
     paths,

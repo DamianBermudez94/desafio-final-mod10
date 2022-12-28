@@ -23,10 +23,10 @@ export const SearchPage: React.FC<Props> = ({ children, query }) => {
     "/search?q=" + query + "&offset=" + offset + "&limit=3",
     fetchApi
   );
-console.log("soy la api",fetchApi);
+console.log("soy la api",data);
 
   const results = data?.results;
-  console.log("soy la data",data);
+  console.log("soy la data asd",data);
 
   //recibo el numero de pag
   function goToPage(page: number) {
