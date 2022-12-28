@@ -8,7 +8,7 @@ import { recoilPersist } from "recoil-persist";
 const { persistAtom } = recoilPersist();
 
 export const userMailState = atom({
-  key: "token",
+  key: "tokenToken",
   default: "",
   effects_UNSTABLE: [persistAtom],
 });

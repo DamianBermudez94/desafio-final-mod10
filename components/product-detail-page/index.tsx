@@ -53,7 +53,7 @@ export const ProductDetailPage: React.FC<Props> = (props) => {
             <ProductDetailTitle style={{ margin: "0" }}>
               {props.data.Name}
             </ProductDetailTitle>
-            <SubTitle style={{ margin: "0" }}>${props.data.unit_price}</SubTitle>
+            <SubTitle style={{ margin: "0" }}>${props.data.Price}</SubTitle>
             <DetailButtonWrapper>
               <PrimaryButtonBig
                 onClick={() => {
