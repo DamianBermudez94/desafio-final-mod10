@@ -24,7 +24,7 @@ export const ProductDetailPage: React.FC<Props> = (props) => {
   const [loading, setLoading] = useState(false);
   const [orderError, setOrderError] = useState(false);
 
-  console.log(props);
+  console.log("soy los props",props);
 
   async function buyProduct() {
     setOrderError(false);
@@ -35,12 +35,16 @@ export const ProductDetailPage: React.FC<Props> = (props) => {
     }
     try {
       const res = await getOrderUrl(props.data.objectID);
+      
+      
       window.location.href = res.url;
+      console.log("soy la res",res);
     } catch (error) {
       setOrderError(true);
       setLoading(false);
     }
   }
+  console.log("soy los props asd",props);
 
   return (
     <>
@@ -80,4 +84,5 @@ export const ProductDetailPage: React.FC<Props> = (props) => {
       )}
     </>
   );
+  console.log("soy los props",props);
 };
