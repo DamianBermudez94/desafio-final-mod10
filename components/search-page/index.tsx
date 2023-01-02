@@ -23,10 +23,13 @@ export const SearchPage: React.FC<Props> = ({ children, query }) => {
     "/search?q=" + query + "&offset=" + offset + "&limit=3",
     fetchApi
   );
-console.log("soy la api",data);
+ 
+  
+console.log("soy la data",data);
 
-  const results = data?.results;
+  const results = data?.results.results;
   console.log("soy la data asd",data);
+console.log("soy el resultado de la data",results);
 
   //recibo el numero de pag
   function goToPage(page: number) {
@@ -44,12 +47,14 @@ console.log("soy la api",data);
   }
   function generatePages() {
     //checkeo el total de productos
-    const total = data?.pagination;
+    const total = data?.results.pagination.total;
     console.log("Soy el total",total);
     
     //obtengo el total de paginas dividiendo por 3 productos por pagina
     const pages = Math.ceil(total / 3);
     const result = [];
+    
+    
     //Genero los divs que me llevan a cada pagina
     for (let index = 0; index < pages; index++) {
       result.push(
@@ -63,7 +68,10 @@ console.log("soy la api",data);
           {index + 1}
         </PageNumber>
       );
+      
     }
+    console.log("soy los resultados",result);
+    
     return result;
   }
 
@@ -82,14 +90,14 @@ console.log("soy la api",data);
                     productId={item.objectID}
                     url={item.Images[0]?.url}
                     title={item.Name}
-                    price={item.unit_price}
+                    price={item.Unit_cost}
                   />
                 );
               })
             ) : (
               <ProductNotFoundWrapper>
                 <SubTitle>No se encontraron resultados</SubTitle>
-                <BodyText>Sugerencias: Silla, Mesa, Alfombra.</BodyText>
+                <BodyText>Sugerencias: Silla, Mesa, Alfombra, Lamparas.</BodyText>
               </ProductNotFoundWrapper>
             )
           ) : (

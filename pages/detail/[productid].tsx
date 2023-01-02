@@ -28,6 +28,9 @@ export async function getStaticPaths() {
   console.log("Soy la respuesta del json",json);
   
   const paths = json.map((item: any) => {
+    console.log("hola perro",{ params: { productId: item } });
+    
+    
     return { params: { productId: item } };
   });
   console.log("soy los paths",paths);
