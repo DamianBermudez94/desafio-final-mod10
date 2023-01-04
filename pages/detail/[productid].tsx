@@ -23,16 +23,16 @@ export async function getStaticPaths() {
     "https://backend-ecommerce-desafiom9.vercel.app/api/products/all/id",
   );
   const json = await res.json();
-  const paths = json.map((productId: any) => {
-    return { params: { productId: productId.toString()} };
+  const paths = json.map((item: any) => {
+    return { params: { productId: item.toString() } };
   });
-  console.log("soy los paths",paths);
-  
+
   return {
-    paths,
+    paths:[],
     fallback: true, // false or 'blocking'
   };
 }
+
 
 export async function getStaticProps(context: GetStaticPropsContext) {
   const id = context?.params?.productId;
@@ -40,7 +40,8 @@ export async function getStaticProps(context: GetStaticPropsContext) {
   
   try {
     const data = await fetchApi("/products/" + id);
-
+    console.log("soy la data",data);
+    
     return {
       props: { data },
       revalidate: 3600,
