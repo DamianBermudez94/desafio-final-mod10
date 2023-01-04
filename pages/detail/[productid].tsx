@@ -18,15 +18,20 @@ const Search: NextPage = ({ data, error }: any) => {
   );
 };
 
-export async function getStaticPaths(id:any) {
+export async function getStaticPaths() {
   const res = await fetch(
-    "https://backend-ecommerce-desafiom9.vercel.app/api/products/all/id",id
+    "https://backend-ecommerce-desafiom9.vercel.app/api/products/all/id",
   );
   const json = await res.json();
+  console.log("soy la respuesta del json",json);
+  
   const paths = json.map((item: any) => {
-    return { params: { productId: item } };
+    
+    return { params: {productId : item} };
   });
-
+ 
+  console.log(paths);
+  
   return {
     paths,
     fallback: true, // false or 'blocking'
