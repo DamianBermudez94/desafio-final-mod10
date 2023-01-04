@@ -25,9 +25,9 @@ export async function getStaticPaths() {
   const productId = await res.json();
   console.log("soy la respuesta del json",productId);
   
-  const paths = productId.map((item:string) => ({
-    params: {productId : item.toString()},
-  }));
+  const paths = productId.map((item:any) => {
+    return {params: {productId : item.toString()}}
+  });
  
   console.log("soy el resultado de los paths",paths);
   
@@ -39,7 +39,8 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context: GetStaticPropsContext) {
   const id = context?.params?.productId;
-
+  console.log("soy los id",id);
+  
   try {
     const data = await fetchApi("/products/" + id);
 
