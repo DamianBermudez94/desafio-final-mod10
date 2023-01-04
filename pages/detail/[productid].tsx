@@ -22,15 +22,11 @@ export async function getStaticPaths() {
   const res = await fetch(
     "https://backend-ecommerce-desafiom9.vercel.app/api/products/all/id",
   );
-  const productId = await res.json();
-  console.log("soy la respuesta del json",productId);
-  
-  const paths = productId.map((item:any) => ({
-   params: {productId : item.toString()}
-  }));
- 
-  console.log("soy el resultado de los paths",paths);
-  
+  const json = await res.json();
+  const paths = json.map((item: any) => {
+    return { params: { productId: item.toString() } };
+  });
+
   return {
     paths,
     fallback: true, // false or 'blocking'
