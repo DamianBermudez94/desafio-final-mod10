@@ -1,7 +1,7 @@
 import { Layout } from "components/layout";
 import { ProductDetailPage } from "components/product-detail-page";
 import { fetchApi } from "lib/api/api";
-import type { GetStaticPropsContext, NextPage } from "next";
+import type { GetStaticPropsContext, NextPage, GetStaticPaths } from "next";
 import Head from "next/head";
 
 const Search: NextPage = ({ data, error }: any) => {
@@ -23,10 +23,11 @@ export async function getStaticPaths() {
     "https://backend-ecommerce-desafiom9.vercel.app/api/products/all/id",
   );
   const json = await res.json();
-  const paths = json.map((item: any) => {
-    return { params: { productId: item.toString() } };
+  const paths = json.map((productId: any) => {
+    return { params: { productId: productId.toString()} };
   });
-
+  console.log("soy los paths",paths);
+  
   return {
     paths,
     fallback: true, // false or 'blocking'
