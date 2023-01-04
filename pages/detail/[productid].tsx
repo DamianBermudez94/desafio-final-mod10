@@ -25,7 +25,7 @@ export async function getStaticPaths() {
   const productId = await res.json();
   console.log("soy la respuesta del json",productId);
   
-  const paths = productId.map((item: any) => ({
+  const paths = productId.map((item:string) => ({
     params: {productId : item.toString()},
   }));
  
