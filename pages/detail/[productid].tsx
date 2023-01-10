@@ -26,7 +26,8 @@ export async function getStaticPaths() {
   const paths = json.map((item: any) => {
     return { params: { productId: item.toString() } };
   });
-
+  console.log("soy los paths",paths);
+  
   return {
     paths:[],
     fallback: true, // false or 'blocking'

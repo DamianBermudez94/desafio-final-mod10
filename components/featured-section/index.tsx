@@ -8,6 +8,8 @@ type Props = {
   data: any;
 };
 export const FeaturedSection: React.FC<Props> = ({ children, data }) => {
+  console.log("soy la data",data);
+  
   return (
     <FeaturedWrapper>
       <SectionTitleWrapper>
