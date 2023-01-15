@@ -8,8 +8,6 @@ type Props = {
   data: any;
 };
 export const FeaturedSection: React.FC<Props> = ({ children, data }) => {
-  console.log("soy la data",data);
-  
   return (
     <FeaturedWrapper>
       <SectionTitleWrapper>
@@ -25,7 +23,6 @@ export const FeaturedSection: React.FC<Props> = ({ children, data }) => {
                   url={product.Images[0]?.url}
                   title={product.Name}
                   price={product.Unit_cost}
-                  
                 ></ProductCard>
               );
             })
