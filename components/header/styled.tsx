@@ -9,7 +9,7 @@ export const BaseHeader = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #fff;
+  background: #002500;
   @media screen and (min-width: 960px) {
     height: 220px;
     

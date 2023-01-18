@@ -8,13 +8,17 @@ type Props = {
   data: any;
 };
 export const FeaturedSection: React.FC<Props> = ({ children, data }) => {
+  console.log("soy la data",data);
   return (
     <FeaturedWrapper>
       <SectionTitleWrapper>
         <SubTitle>Productos Destacados</SubTitle>
       </SectionTitleWrapper>
       <CardsWrapper>
+        
         {data?.results
+        
+        
           ? data.results.map((product: any) => {
               return (
                 <ProductCard
