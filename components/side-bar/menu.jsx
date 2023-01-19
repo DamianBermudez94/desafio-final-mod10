@@ -157,7 +157,7 @@ const BgDiv = styled.div`
   
   &.active{
     border-radius: 0 0 100% 0;
-    top: 190px;
+    top: 170px;
     left: 0;
     width: 100%;
     height: 100vh;

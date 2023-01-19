@@ -20,7 +20,7 @@ export const SearchPage: React.FC<Props> = ({ children, query }) => {
   const [page, setPage] = useState(1);
   const [offset, setOffset] = useState(0);
   const { data, error, mutate } = useSWR(
-    "/search?q=" + query + "&offset=" + offset + "&limit=4",
+    "/search?q=" + query + "&offset=" + offset + "&limit=3",
     fetchApi
   );
  
