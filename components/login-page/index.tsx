@@ -6,7 +6,7 @@ import React, { useState } from "react";
 import { useRecoilState } from "recoil";
 import { Spinner } from "ui/loader";
 import { Title } from "ui/text";
-import { LoginLoadersWrapper, LoginPageWrapper,LoginPageBody } from "./styled";
+import { LoginLoadersWrapper, LoginPageWrapper } from "./styled";
 
 type Props = {
   children?: React.ReactNode;
@@ -45,7 +45,7 @@ export const LoginPage: React.FC<Props> = ({ children }) => {
   return (
     <>
       {token ? (
-        <LoginPageBody>Ya tienes una sesión activa</LoginPageBody>
+        <div>Ya tienes una sesión activa</div>
       ) : (
         <LoginPageWrapper>
           {!showCodePage ? <Title>Ingresar</Title> : <Title>Código</Title>}

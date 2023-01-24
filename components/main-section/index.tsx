@@ -1,4 +1,4 @@
-import { SearchForm } from "components/seacrh-form";
+import { SearchForm } from "components/search-form";
 import { useRouter } from "next/router";
 import React from "react";
 import { Title } from "ui/text";

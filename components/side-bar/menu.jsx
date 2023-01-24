@@ -79,7 +79,6 @@ const NavContainer = styled.nav`
   justify-content: space-between;
   align-items: center;
   
-
   .links{
     position: absolute;
     top: -700px;
@@ -98,11 +97,9 @@ const NavContainer = styled.nav`
     @media(min-width: 960px){
       width: 100%;
       position: inherit;
-     
       margin: auto;
       padding: 10px;
-      display: grid;
-      grid: repeat(1, 60px) / auto-flow 100px;
+      background-color: red;
       a{
         font-size: 1rem;
         color: #333;
@@ -114,7 +111,6 @@ const NavContainer = styled.nav`
         
       }
     
-
      
     }
   }
@@ -136,11 +132,31 @@ const NavContainer = styled.nav`
       color: white;
       
     }
+    @media(min-width: 960px){
+      width: 50%;
+      top: 70px;
+      display: flex;
+      background-color: red;
+      a{
+        font-size: 1rem;
+        color: #333;
+        width: 100%;
+        margin: 0 auto;
+        padding: 12px;
+       
+    
+        
+      }
+    
+     
+    }
+
+
   }
   .burguer{
     @media(min-width: 960px){
       display: none;
-      color: #333;
+      
     }
   }
 `
@@ -174,8 +190,7 @@ const BgDiv = styled.div`
       height: 100vh;
       background-color: blue;
     }
-
      
     }
-
 `
+

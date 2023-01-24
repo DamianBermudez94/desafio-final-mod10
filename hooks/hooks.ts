@@ -2,13 +2,17 @@ import { getSettedToken } from "lib/api/api";
 import { useEffect, useState } from "react";
 import {
   atom,
+  selector,
+  useRecoilState,
+  useRecoilValue,
+  useSetRecoilState,
 } from "recoil";
 import { recoilPersist } from "recoil-persist";
 
 const { persistAtom } = recoilPersist();
 
 export const userMailState = atom({
-  key: "Token",
+  key: "userMailState",
   default: "",
   effects_UNSTABLE: [persistAtom],
 });

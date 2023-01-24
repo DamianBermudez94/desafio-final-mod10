@@ -20,6 +20,7 @@ export const UserSessionWrapper = styled.div`
   align-items: center;
   padding-bottom:20px;
   color: #fff;
+ 
   @media screen and (min-width: 960px) {
   color: #000;
   }

@@ -17,11 +17,10 @@ export const Footer: React.FC = () => {
         <LargeTextBold>Redes</LargeTextBold>
         <StyledLink  href={"https://damianbermudezdev.es/"} target={"_blank"}>
             <FacebookLogoIcon></FacebookLogoIcon>
-            <BodyText>Facebook</BodyText>
         </StyledLink>
         <StyledLink href={"https://damianbermudezdev.es/"} target={"_blank"}>
             <InstagramLogoIcon></InstagramLogoIcon>
-            <BodyText>Instagram</BodyText>
+           
         </StyledLink>
       </SocialMediaWrapper>
     </FooterWrapper>

@@ -6,18 +6,13 @@ export const FooterWrapper = styled.footer`
   height: 250px;
   background-color: #313638;
   display: flex;
-  flex-direction: column;
+  flex-direction: row-reverse;
   justify-content: space-around;
   align-items: flex-start;
   padding: 30px;
 
   ;
-  @media screen and (min-width: 960px) {
-
-
-    justify-content: space-between;
-  
-  }
+ 
 `;
 export const SocialMediaWrapper = styled.div`
     color: rgb(255, 255, 255);
@@ -29,16 +24,17 @@ export const SocialMediaWrapper = styled.div`
  
 `;
 
-export const FacebookLogoIcon = styled.p`
-  color: rgb(255, 255, 255);
-  margin: 10px;
-`;
+export const LargeTextBold = styled.p`
 
+background-color: red;
+
+`;
 export const StyledLink = styled(Link)`
   color: Blue;
   text-decoration: none;
   display: flex;
   justify-items: space-between;
+  padding: 10px;
   
 
 `;

@@ -1,4 +1,4 @@
-import { SearchForm } from "components/seacrh-form";
+import { SearchForm } from "components/search-form";
 import { SideBar } from "components/side-bar";
 import {WhiteLogoIcon} from "ui/icons"
 import Link from "next/link";
