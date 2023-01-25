@@ -99,10 +99,11 @@ const NavContainer = styled.nav`
       position: inherit;
       margin: auto;
       padding: 10px;
-      background-color: red;
+      display: flex;
+      
       a{
         font-size: 1rem;
-        color: #333;
+        color: #fff;
         width: 100%;
         margin: 0 auto;
         padding: 12px;
@@ -135,20 +136,6 @@ const NavContainer = styled.nav`
     @media(min-width: 960px){
       width: 50%;
       top: 70px;
-      display: flex;
-      background-color: red;
-      a{
-        font-size: 1rem;
-        color: #333;
-        width: 100%;
-        margin: 0 auto;
-        padding: 12px;
-       
-    
-        
-      }
-    
-     
     }
 
 
