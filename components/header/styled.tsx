@@ -1,11 +1,9 @@
 import styled from "styled-components";
 
 export const BaseHeader = styled.header`
-  z-index: 5;
+ 
   width: 100%;
   padding: 23px;
-
-  top: 0px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -45,13 +43,13 @@ export const SideBarWrapper = styled.div`
   }
 `;
 export const FormWrapper = styled.div`
-  width: 100%;
+  width: 50%;
   max-width: 360px;
   margin: 0 auto;
   grid-column-start: 1;
   grid-column-end: 3;
   @media screen and (min-width: 744px) {
-    max-width: none;
+  
     grid-column-start: 2;
     grid-column-end: 3;
     grid-row-start: 1;

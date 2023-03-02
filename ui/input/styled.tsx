@@ -7,7 +7,7 @@ export const BaseInput = styled.input`
   border-radius: 6px;
   border: solid 1px;
   border-color: rgba(0, 0, 0, 0.5);
-  padding: 5px;
+  padding: 10px;
 `;
 export const Label = styled(TinyText).attrs(() => ({
   as: "label",

@@ -45,7 +45,7 @@ export const LoginPage: React.FC<Props> = ({ children }) => {
   return (
     <>
       {token ? (
-        <div>Ya tienes una sesión activa</div>
+        <div style={{"height":"500px"}}><p style={{"display":"flex","flexDirection":"row","height":"100%","textAlign":"center","justifyItems":"center","justifyContent":"center"}}>Ya tienes una sesión activa</p></div>
       ) : (
         <LoginPageWrapper>
           {!showCodePage ? <Title>Ingresar</Title> : <Title>Código</Title>}

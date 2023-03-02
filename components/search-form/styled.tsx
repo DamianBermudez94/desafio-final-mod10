@@ -5,6 +5,7 @@ export const BaseForm = styled.form`
   display: flex;
   flex-direction: column;
   gap: 10px;
+  margin: 20px 10px;
   @media screen and (min-width: 744px) {
     flex-direction: row;
   }

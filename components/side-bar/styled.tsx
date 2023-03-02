@@ -2,12 +2,6 @@ import styled from "styled-components";
 
 
 export const SideBarContainer = styled.div`
-  
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  
-
 `;
 
 export const UserSessionWrapper = styled.div`

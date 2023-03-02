@@ -34,7 +34,7 @@ import {
     }
     return (
       <>
-        <NavContainer>
+        <NavContainer className='nav-container'>
           <div className={`links ${clicked ? 'active' : ''}`}>
           <Link style={{textDecoration:'none'}} onClick={handleClick} href="/login">
                         
@@ -72,12 +72,9 @@ import {
 export default Navbar
 
 const NavContainer = styled.nav`
- 
-  margin: 40px;
   padding: .4rem;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: row-reverse;
   
   .links{
     position: absolute;
@@ -102,9 +99,9 @@ const NavContainer = styled.nav`
       display: flex;
       
       a{
-        font-size: 1rem;
+        font-size: 1.5rem;
         color: #fff;
-        width: 100%;
+      
         margin: 0 auto;
         padding: 12px;
        
@@ -114,6 +111,7 @@ const NavContainer = styled.nav`
     
      
     }
+
   }
   .links.active{
     width: 100%;
@@ -121,14 +119,14 @@ const NavContainer = styled.nav`
     position: absolute;
     margin-left: auto;
     margin-right: auto;
-    top: 200px;
+    top: 150px;
     left: 0;
     right: 0;
     text-align: center;
  
     a{
       width: 100%;
-      font-size: 2rem;
+      font-size: 1.5rem;
       margin-top: 1rem;
       color: white;
       
@@ -136,6 +134,15 @@ const NavContainer = styled.nav`
     @media(min-width: 960px){
       width: 50%;
       top: 70px;
+      display: flex;
+      justify-content: space-between;
+    }
+    a{
+      width: 100%;
+      font-size: 1.5rem;
+      margin-top: 1rem;
+      color: white;
+      
     }
 
 
@@ -160,13 +167,14 @@ const BgDiv = styled.div`
   
   &.active{
     border-radius: 0 0 100% 0;
-    top: 170px;
+    top: 96px;
     left: 0;
     width: 100%;
     height: 100vh;
   }
   @media(min-width: 960px){
     position: initial;
+    background-color: inherit;
     
     
     &.active{
@@ -175,7 +183,7 @@ const BgDiv = styled.div`
       left: 0;
       width: 100%;
       height: 100vh;
-      background-color: blue;
+     
     }
      
     }
