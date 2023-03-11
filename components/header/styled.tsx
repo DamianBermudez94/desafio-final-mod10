@@ -3,11 +3,11 @@ import styled from "styled-components";
 export const BaseHeader = styled.header`
  
   width: 100%;
+ height: 220px;
   padding: 23px;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  background: #313638;
+  background-color: #313638;
   @media screen and (min-width: 960px) {
     height: 220px;
     
