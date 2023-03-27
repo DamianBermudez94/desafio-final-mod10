@@ -24,7 +24,7 @@ const Burguer = styled.div`
   height: 30px;
   position: relative;
   cursor: pointer;
-  display: inline-block;
+  display: flex;
 
 }
 .nav-icon-5 span{

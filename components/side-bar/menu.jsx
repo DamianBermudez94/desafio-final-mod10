@@ -36,9 +36,9 @@ import {
  
     return (
       <>  
-        <div className='burguer'>
-          <BurguerButton clicked={clicked} handleClick={handleClick} />
-        </div>
+       
+        <BurguerButton clicked={clicked} handleClick={handleClick} />
+  
         <NavContainer className='nav-container'>
           <div className={`links ${clicked ? 'active' : ''}`}>
           <Link style={{textDecoration:'none'}} onClick={handleClick} href="/login">
@@ -96,21 +96,15 @@ const NavContainer = styled.nav`
       
     }
     @media(min-width: 960px){
-      width: 100%;
       position: inherit;
-      margin: auto;
-      padding: 10px;
       display: flex;
+      align-items: center;
+      justify-content: center;
       
-      a{
-        font-size: 1.5rem;
-        color: #fff;
-        margin: 0 auto;
-        padding: 12px;
-       
-    
-        
-      }
+    a{
+      font-size: 1.5rem;
+      padding: 12px;
+    }
     
      
     }
@@ -122,12 +116,12 @@ const NavContainer = styled.nav`
     position: absolute;
     margin-left: auto;
     margin-right: auto;
-    top: 150px;
+    top: 220px;
     left: 0;
     right: 0;
     text-align: center;
     opacity: 1;
-    background-color: #313638;
+    background-color:#313638;
     
     a{
       width: 100%;
@@ -135,27 +129,6 @@ const NavContainer = styled.nav`
       margin-top: 1rem;
       color: white;
       
-    }
-    @media(min-width: 960px){
-      width: 50%;
-      top: 70px;
-      display: flex;
-      justify-content: space-between;
-    }
-    a{
-      width: 100%;
-      font-size: 1.5rem;
-      margin-top: 1rem;
-      color: white;
-      
-    }
-
-
-  }
-  .burguer{
-    @media(min-width: 960px){
-      display: none;
-      background-color: red;
     }
   }
 `

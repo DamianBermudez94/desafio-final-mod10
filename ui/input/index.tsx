@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState, useEffect } from "react";
 import { FieldValues, UseFormRegister } from "react-hook-form";
 import { BaseInput, Label } from "./styled";
 type props = {
@@ -13,14 +13,17 @@ type props = {
 
 const Input: React.FC<props> = (props) => {
   const register = props.register;
+
   if (props.setValue) {
     props.setValue(props.name, props.default);
   }
 
+  
+
   return (
     <Label style={{ display: "flex", flexDirection: "column" }}>
       {props.label}
-      <BaseInput
+      <BaseInput  
         placeholder={props.placeHolder}
         {...register(props.name, {
           required: props.required,

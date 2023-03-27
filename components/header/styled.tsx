@@ -3,14 +3,20 @@ import styled from "styled-components";
 export const BaseHeader = styled.header`
  
   width: 100%;
- height: 220px;
-  padding: 23px;
+  height: 220px;
+  padding: 5em;
   display: flex;
   justify-content: space-between;
+  z-index:3;
   background-color: #313638;
   @media screen and (min-width: 960px) {
-    height: 220px;
-    
+   
+    width:100%;
+    padding:5em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+   
   }
 `;
 export const SidebarLink = styled.div`
