@@ -29,7 +29,7 @@ export async function getStaticPaths() {
   console.log("soy los paths",paths);
   
   return {
-    paths,
+    paths:[],
     fallback: true, // false or 'blocking'
   };
 }
