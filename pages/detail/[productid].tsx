@@ -1,7 +1,7 @@
 import { Layout } from "components/layout";
 import { ProductDetailPage } from "components/product-detail-page";
 import { fetchApi } from "lib/api/api";
-import type { GetStaticPropsContext, NextPage, GetStaticPaths } from "next";
+import type { GetStaticPropsContext, NextPage } from "next";
 import Head from "next/head";
 
 const Search: NextPage = ({ data, error }: any) => {
@@ -24,12 +24,12 @@ export async function getStaticPaths() {
   );
   const json = await res.json();
   const paths = json.map((item: any) => {
-    return { params: { productId: item } };
+    return { params: { productId: item} };
   });
   console.log("soy los paths",paths);
   
   return {
-    paths:[],
+    paths,
     fallback: true, // false or 'blocking'
   };
 }
