@@ -24,7 +24,7 @@ export async function getStaticPaths() {
   );
   const json = await res.json();
   const paths = json.map((item: any) => {
-    return { params: { productId: item.toString() } };
+    return { params: { productId: item } };
   });
   console.log("soy los paths",paths);
   
