@@ -1,4 +1,5 @@
 import { getOrderUrl, getSettedToken } from "src/lib/api/api";
+import { ProductoType } from "src/types"; // Ajustá el path si lo pusiste en otro lado
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { PrimaryButtonBig } from "./../../ui/buttons";
@@ -15,9 +16,10 @@ import {
 } from "./styled";
 
 type Props = {
-  data: ProductoType | undefined;
+  data: ProductoType;
   notFound: boolean;
 };
+
 
 export const ProductDetailPage: React.FC<Props> = (props) => {
   const router = useRouter();
@@ -30,10 +32,13 @@ export const ProductDetailPage: React.FC<Props> = (props) => {
     const token = await getSettedToken();
     if (!token) {
       router.push("/login");
+      return;
     }
     try {
       const res = await getOrderUrl(props.data.objectID);
-      console.log("soy la respuesta", res);
+      console.log("Producto:", props.data?.Name, props.data?.Unit_cost);
+      console.log("Producto:", props.data?.Name, props.data?.Images);
+
 
       window.location.href = res.url;
     } catch (error) {
@@ -47,7 +52,7 @@ export const ProductDetailPage: React.FC<Props> = (props) => {
       {props.data?.objectID ? (
         <DetailWrapper>
           <DetailImgWrapper>
-            <DetailImg src={props.data.Images[0]?.url} />
+            <DetailImg src={props.data.Images?.[0]?.url || "/no-image.jpg"} />
           </DetailImgWrapper>
           <DetailDescriptionWrapper>
             <ProductDetailTitle style={{ margin: "0" }}>
@@ -56,13 +61,17 @@ export const ProductDetailPage: React.FC<Props> = (props) => {
             <SubTitle style={{ margin: "0" }}>${props.data.Unit_cost}</SubTitle>
             <DetailButtonWrapper>
               <PrimaryButtonBig
-                onClick={() => {
-                  buyProduct();
-                }}
+                disabled={loading}
+                onClick={buyProduct}
               >
                 {loading ? <Spinner /> : "Comprar"}
               </PrimaryButtonBig>
-              {orderError ? "ups algo salio mal" : null}
+              {orderError && (
+                <BodyText style={{ color: "red" }}>
+                  🛑 Ocurrió un error al procesar la compra. Por favor intentá nuevamente.
+                </BodyText>
+              )}
+
             </DetailButtonWrapper>
             <BodyText>{props.data.Description}</BodyText>
           </DetailDescriptionWrapper>

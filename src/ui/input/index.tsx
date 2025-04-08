@@ -1,36 +1,42 @@
-import React,{useState, useEffect } from "react";
-import { FieldValues, UseFormRegister } from "react-hook-form";
+import React, { useEffect } from "react";
 import { BaseInput, Label } from "./styled";
-type props = {
-  setValue?: any;
+
+type Props = {
   name: string;
   label?: string;
   placeHolder?: string;
   default?: string;
   required?: boolean;
-  register: UseFormRegister<FieldValues>;
+  register: any;
+  setValue?: any;
 };
 
-const Input: React.FC<props> = (props) => {
-  const register = props.register;
-
-  if (props.setValue) {
-    props.setValue(props.name, props.default);
-  }
-
-  
+const Input: React.FC<Props> = ({
+  name,
+  label,
+  placeHolder,
+  default: defaultValue,
+  required,
+  register,
+  setValue,
+}) => {
+  useEffect(() => {
+    if (setValue && defaultValue) {
+      setValue(name, defaultValue);
+    }
+  }, [setValue, name, defaultValue]);
 
   return (
     <Label style={{ display: "flex", flexDirection: "column" }}>
-      {props.label}
-      <BaseInput  
-        placeholder={props.placeHolder}
-        {...register(props.name, {
-          required: props.required,
-        })}
-      ></BaseInput>
+      {label}
+      <BaseInput
+        placeholder={placeHolder}
+        {...register(name, { required })}
+      />
     </Label>
   );
 };
 
 export default Input;
+
+

@@ -1,5 +1,4 @@
 import React from "react";
-import { useForm } from "react-hook-form";
 import { PrimaryButton } from "./../../ui/buttons";
 import Input from "./../../ui/input";
 import { TinyText } from "./../../ui/text";
@@ -11,41 +10,49 @@ import {
 } from "./styled";
 
 type Props = {
-  children?: React.ReactNode;
   type: "mail" | "code";
-  submit: (data: any, event: any) => void;
+  email: string;
+  setEmail: (val: string) => void;
+  code: string;
+  setCode: (val: string) => void;
+  submit: (e: React.FormEvent) => void;
 };
-export const LoginForm: React.FC<Props> = (props) => {
-  const {
-    register,
-    handleSubmit,
-    watch,
-    reset,
-    formState: { errors },
-  } = useForm();
 
+export const LoginForm: React.FC<Props> = ({
+  type,
+  email,
+  setEmail,
+  code,
+  setCode,
+  submit,
+}) => {
   return (
-    <>
-      {props.type == "mail" ? (
-        <LoginFormWrapper onSubmit={handleSubmit(props.submit)}>
-          <LoginInputWrapper>
-            <Input name="email" label="Email" register={register}></Input>
-          </LoginInputWrapper>
-          <LoginButtonWrapper>
-            <PrimaryButton>Continuar</PrimaryButton>
-          </LoginButtonWrapper>
-        </LoginFormWrapper>
+    <LoginFormWrapper onSubmit={submit}>
+      {type === "mail" ? (
+        <LoginInputWrapper>
+          <Input
+            name="email"
+            label="Email"
+            value={email}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
+          />
+        </LoginInputWrapper>
       ) : (
-        <LoginFormWrapper onSubmit={handleSubmit(props.submit)}>
-          <CodeInputWrapper>
-            <Input name="code" label="Codigo" register={register}></Input>
-          </CodeInputWrapper>
+        <CodeInputWrapper>
+          <Input
+            name="code"
+            label="Código"
+            value={code}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setCode(e.target.value)}
+          />
           <TinyText>Te enviamos un código al mail</TinyText>
-          <LoginButtonWrapper>
-            <PrimaryButton>Ingresar</PrimaryButton>
-          </LoginButtonWrapper>
-        </LoginFormWrapper>
+        </CodeInputWrapper>
       )}
-    </>
+      <LoginButtonWrapper>
+        <PrimaryButton>
+          {type === "mail" ? "Continuar" : "Ingresar"}
+        </PrimaryButton>
+      </LoginButtonWrapper>
+    </LoginFormWrapper>
   );
 };

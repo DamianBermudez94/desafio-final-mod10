@@ -1,60 +1,71 @@
 import { Layout } from "src/components/layout";
 import { ProductDetailPage } from "src/components/product-detail-page";
 import { fetchApi } from "src/lib/api/api";
-import type { GetStaticPropsContext, NextPage } from "next";
+import type { GetStaticProps, GetStaticPaths, GetStaticPropsContext, NextPage } from "next";
 import Head from "next/head";
+import { ProductoType } from "src/types"; // Asegurate de tener este tipo
 
-const Search: NextPage = ({ data, error }: any) => {
+type Props = {
+  data: ProductoType;
+  error?: boolean;
+};
+
+const ProductDetail: NextPage<Props> = ({ data, error }) => {
   if (!data && !error) {
-    return <div>Cargando...</div>; // 🔹 Mostrar algo mientras llegan los datos
+    return <div>Cargando...</div>;
   }
 
   return (
     <Layout form={true} sticky={false}>
       <Head>
-        <title>Detalle Del Producto - Compralo</title>
+        <title>Detalle del Producto - Compralo</title>
       </Head>
       <ProductDetailPage data={data} notFound={!!error} />
     </Layout>
   );
 };
 
-export async function getStaticPaths() {
-  const res = await fetch(
-    "https://backend-ecommerce-desafiom9.vercel.app/api/products/all/id",
-  );
-  const json = await res.json();
-  const paths = json.map((item: any) => {
-    return { params: { productId: item } };
-  });
-  console.log("soy los paths", paths);
-
-  return {
-    paths: [],
-    fallback: true, // false or 'blocking'
-  };
-}
+export const getStaticPaths: GetStaticPaths = async () => {
+  try {
+    const res = await fetch("https://backend-ecommerce-desafiom9.vercel.app/api/products/all/id");
 
 
-export async function getStaticProps(context: GetStaticPropsContext) {
-  const id = context?.params?.productId;
+    const ids: string[] = await res.json();
 
-  if (!id) {
-    console.log("⚠️ No se encontró el ID del producto.");
-    return { notFound: true }; // ❌ Página 404 si no hay ID
+    const paths = ids.map((id) => ({
+      params: { productid: id },
+    }));
+
+    return {
+      paths,
+      fallback: true, // permite renderizar productos que no estaban al momento del build
+    };
+  } catch (error) {
+    console.error("❌ Error al generar paths:", error);
+    return {
+      paths: [],
+      fallback: true,
+    };
+  }
+};
+
+export const getStaticProps: GetStaticProps = async (context: GetStaticPropsContext) => {
+  const id = context.params?.productid;
+
+  if (!id || typeof id !== "string") {
+    console.warn("⚠️ No se encontró el ID del producto.");
+    return { notFound: true };
   }
 
   try {
-    const data = await fetchApi("/products/" + id);
-    console.log("✅ Datos obtenidos:", data);
-
+    const data: ProductoType = await fetchApi("/products/" + id);
     if (!data) {
       return { notFound: true };
     }
 
     return {
       props: { data },
-      revalidate: 3600,
+      revalidate: 3600, // revalida cada 1 hora
     };
   } catch (error) {
     console.error("❌ Error al obtener el producto:", error);
@@ -62,6 +73,6 @@ export async function getStaticProps(context: GetStaticPropsContext) {
       props: { error: true },
     };
   }
-}
+};
 
-export default Search;
+export default ProductDetail;

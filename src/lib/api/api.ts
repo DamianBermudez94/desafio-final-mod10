@@ -97,6 +97,10 @@ type UserData = {
 
 export async function patchUserData(body: UserData) {
   try {
+    const token = await getSettedToken();
+    console.log("Token usado:", token);
+    console.log("Body enviado:", body);
+
     const res = await fetchApi("/me", {
       method: "PATCH",
       headers: {
@@ -104,8 +108,12 @@ export async function patchUserData(body: UserData) {
       },
       body: JSON.stringify(body),
     });
+
+    console.log("Respuesta del server:", res);
+
     return res;
-  } catch (error) {
+  } catch (error: any) {
+    console.error("Error al guardar datos:", error);
     return false;
   }
 }

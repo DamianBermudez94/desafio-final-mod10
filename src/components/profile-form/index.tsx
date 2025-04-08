@@ -14,42 +14,44 @@ import {
 
 type Props = {
   children?: React.ReactNode;
-  submit?: (e: any) => void;
   data: any;
 };
-export const ProfileForm: React.FC<Props> = (props) => {
+
+export const ProfileForm: React.FC<Props> = ({ data }) => {
   const router = useRouter();
-  const userData = props.data;
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [saved, setSaved] = useState(false);
+
   const {
-    setValue,
     register,
     handleSubmit,
-    watch,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      name: data?.name || "",
+      address: data?.address || "",
+      phone: data?.phone?.toString() || "",
+    },
+  });
 
-  async function submit(data: any) {
+  async function submit(formData: any) {
     setLoading(true);
     setError(false);
 
     const updated = await patchUserData({
-      name: data.name,
-      address: data.address,
-      phone: parseInt(data.phone),
+      name: formData.name,
+      address: formData.address,
+      phone: parseInt(formData.phone),
     });
+
     if (updated) {
       setLoading(false);
-      setError(false);
       setSaved(true);
-      setTimeout(() => {
-        router.push("/");
-      }, 500);
+      setTimeout(() => router.push("/"), 500);
     } else {
-      setError(true);
       setLoading(false);
+      setError(true);
     }
   }
 
@@ -57,51 +59,42 @@ export const ProfileForm: React.FC<Props> = (props) => {
     <ProfileFormWrapper onSubmit={handleSubmit(submit)}>
       <ProfileInputWrapper>
         <Input
-          setValue={setValue}
-          required={true}
+          required
           name="name"
           register={register}
           label="Nombre Completo"
-          default={userData ? userData.name : ""}
-        ></Input>
-        {errors.name ? (
-          <TinyText style={{ color: "red" }}>Obligatorio</TinyText>
-        ) : null}
+        />
+        {errors.name && <TinyText style={{ color: "red" }}>Obligatorio</TinyText>}
       </ProfileInputWrapper>
+
       <ProfileInputWrapper>
         <Input
-          setValue={setValue}
-          required={true}
+          required
           name="address"
           register={register}
-          label="Direccion"
-          default={userData ? userData.address : ""}
-        ></Input>
-        {errors.address ? (
-          <TinyText style={{ color: "red" }}>Obligatorio</TinyText>
-        ) : null}
+          label="Dirección"
+        />
+        {errors.address && <TinyText style={{ color: "red" }}>Obligatorio</TinyText>}
       </ProfileInputWrapper>
+
       <ProfileInputWrapper>
         <Input
-          setValue={setValue}
-          required={true}
+          required
           name="phone"
           register={register}
-          label="Telefono"
-          default={userData ? userData.phone : ""}
-        ></Input>
-        {errors.phone ? (
-          <TinyText style={{ color: "red" }}>Obligatorio</TinyText>
-        ) : null}
+          label="Teléfono"
+        />
+        {errors.phone && <TinyText style={{ color: "red" }}>Obligatorio</TinyText>}
       </ProfileInputWrapper>
+
       <ProfileButtonWrapper>
         <PrimaryButton>{loading ? <Spinner /> : "Guardar"}</PrimaryButton>
-        {saved ? <TinyText>Guardado</TinyText> : null}
-        {error ? (
+        {saved && <TinyText>Guardado</TinyText>}
+        {error && (
           <TinyText style={{ color: "red" }}>
-            Algo salio mal, vuelve a intentarlo.
+            Algo salió mal, vuelve a intentarlo.
           </TinyText>
-        ) : null}
+        )}
       </ProfileButtonWrapper>
     </ProfileFormWrapper>
   );

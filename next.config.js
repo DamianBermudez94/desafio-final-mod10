@@ -1,14 +1,17 @@
 const withSvgr = require("next-svgr");
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {};
-
-module.exports = withSvgr({
-  // your config for other plugins or the general next.js here...
+const nextConfig = withSvgr({
   reactStrictMode: true,
   swcMinify: true,
   compiler: {
-    styledComponents: true,
+    styledComponents: true, // Habilita soporte para styled-components
   },
-  
+  webpackDevMiddleware: config => {
+    config.watchOptions = {
+      poll: 300, // Ajusta el tiempo de revisión según tus necesidades
+    };
+    return config;
+  },
 });
+
+module.exports = nextConfig;

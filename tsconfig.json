@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "target": "es5",
+    "target": "es6",
     "lib": [
       "dom",
       "dom.iterable",
@@ -9,10 +9,12 @@
     ],
     "allowJs": true,
     "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
@@ -23,9 +25,7 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx",
-    "src/components/side-bar/indexx.tsx",
-    "src/components/side-bar/menu.jsx"
+    "**/*.tsx"
   ],
   "exclude": [
     "node_modules"

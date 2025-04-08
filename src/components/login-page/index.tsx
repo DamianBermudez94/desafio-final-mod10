@@ -1,62 +1,61 @@
-import { LoginForm } from "src/components/login-form";
-import { useCheckToken } from "src/hooks/hooks";
-import { userMailState } from "src/recoil/atoms"
-import { getAuth, getToken } from "src/lib/api/api";
-import { useRouter } from "next/router";
 import React, { useState } from "react";
-import { useRecoilState } from "recoil";
+import { useRouter } from "next/router";
+import { LoginForm } from "src/components/login-form";
 import { Spinner } from "src/ui/loader";
 import { Title } from "src/ui/text";
+import { getAuth, getToken } from "src/lib/api/api";
+import { userMailState } from "src/recoil/atoms";
+import { useRecoilState } from "recoil";
 import { LoginLoadersWrapper, LoginPageWrapper } from "./styled";
 
-type Props = {
-  children?: React.ReactNode;
-};
-export const LoginPage: React.FC<Props> = ({ children }) => {
+export const LoginPage: React.FC = () => {
   const router = useRouter();
-  const token = useCheckToken();
-  const [mail, setMail] = useState("");
   const [showCodePage, setShowCodePage] = useState(false);
-  const [error, setError] = useState(false);
+  const [email, setEmail] = useState("");
+  const [code, setCode] = useState("");
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
   const [loggedUser, setLoggedUser] = useRecoilState(userMailState);
 
-  async function handleSubmit(data: any, e: any) {
-    setError(false);
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
     setLoading(true);
-    let res;
-    if (data.email && !data.code) res = await getAuth({ email: data.email });
-    if (data.email && data.code)
-      res = await getToken({ email: mail, code: parseInt(data.code) });
-    if (res.error) {
-      setLoading(false);
-      setError(true);
-    } else if (res.token) {
-      setLoggedUser(data.email);
+    setError(false);
 
-      router.push("/profile");
-    } else {
-      setError(false);
-      setMail(data.email);
-      e.target.reset();
+    try {
+      if (!showCodePage) {
+        const res = await getAuth({ email });
+        if (res.error) throw new Error("Error en getAuth");
+        setShowCodePage(true); // --> MOSTRAR INPUT DE CÓDIGO
+      } else {
+        const res = await getToken({ email, code: parseInt(code) });
+        if (!res.token) throw new Error("Código incorrecto");
+        setLoggedUser(email);
+        router.push("/profile"); // --> REDIRIGE A PERFIL
+      }
+    } catch (err) {
+      console.error("Error en login:", err);
+      setError(true);
+    } finally {
       setLoading(false);
-      setShowCodePage(!showCodePage);
     }
-  }
+  };
+
   return (
-    <>
-      {token ? (
-        <div style={{ "height": "500px" }}><p style={{ "display": "flex", "flexDirection": "row", "height": "100%", "textAlign": "center", "justifyItems": "center", "justifyContent": "center" }}>Ya tienes una sesión activa</p></div>
-      ) : (
-        <LoginPageWrapper>
-          {!showCodePage ? <Title>Ingresar</Title> : <Title>Código</Title>}
-          <LoginForm submit={handleSubmit} type={mail ? "code" : "mail"} />
-          <LoginLoadersWrapper>
-            {loading && <Spinner></Spinner>}
-            {error && <span>Algo salio mal</span>}
-          </LoginLoadersWrapper>
-        </LoginPageWrapper>
-      )}
-    </>
+    <LoginPageWrapper>
+      <Title>{showCodePage ? "Código" : "Ingresar"}</Title>
+      <LoginForm
+        type={showCodePage ? "code" : "mail"}
+        email={email}
+        setEmail={setEmail}
+        code={code}
+        setCode={setCode}
+        submit={handleSubmit}
+      />
+      <LoginLoadersWrapper>
+        {loading && <Spinner />}
+        {error && <span>Algo salió mal</span>}
+      </LoginLoadersWrapper>
+    </LoginPageWrapper>
   );
 };
