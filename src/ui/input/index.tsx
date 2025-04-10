@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { BaseInput, Label } from "./styled";
 
 type Props = {
@@ -7,8 +7,8 @@ type Props = {
   placeHolder?: string;
   default?: string;
   required?: boolean;
-  register: any;
-  setValue?: any;
+  value?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 const Input: React.FC<Props> = ({
@@ -17,26 +17,20 @@ const Input: React.FC<Props> = ({
   placeHolder,
   default: defaultValue,
   required,
-  register,
-  setValue,
+  value,
+  onChange,
 }) => {
-  useEffect(() => {
-    if (setValue && defaultValue) {
-      setValue(name, defaultValue);
-    }
-  }, [setValue, name, defaultValue]);
-
   return (
     <Label style={{ display: "flex", flexDirection: "column" }}>
       {label}
       <BaseInput
+        name={name}
         placeholder={placeHolder}
-        {...register(name, { required })}
+        value={value}
+        onChange={onChange}
+        required={required}
       />
     </Label>
   );
 };
-
 export default Input;
-
-
