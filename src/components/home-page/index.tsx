@@ -1,6 +1,8 @@
+import React from "react";
+
 import { FeaturedSection } from "src/components/featured-section";
 import { MainSection } from "src/components/main-section";
-import React from "react";
+
 
 type Props = {
   children?: React.ReactNode;
@@ -16,6 +18,7 @@ export const HomePage: React.FC<Props> = ({ children, data }) => {
           alt="background-image"
           className="object-cover w-full h-full absolute top-0 flex flex-col justify-center items-center bg-cover"
         />
+        <p className="">hola</p>
       </div>
       <div className="z-[2] relative w-full h-full">
         <MainSection />

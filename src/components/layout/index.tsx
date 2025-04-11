@@ -1,6 +1,7 @@
 import { Footer } from "src/components/footer";
 import { Header } from "src/components/header";
 import React from "react";
+import '../globals.css'
 
 type Props = {
   children?: React.ReactNode;
