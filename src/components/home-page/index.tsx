@@ -11,7 +11,7 @@ type Props = {
 
 export const HomePage: React.FC<Props> = ({ children, data }) => {
   return (
-    <div className="relative w-full flex flex-col justify-center items-center text-center">
+    <section className="relative w-full h-full flex flex-col justify-center items-center text-center">
       <div className="z-[1] w-full h-full">
         <img
           src="/background.jpg"
@@ -24,6 +24,6 @@ export const HomePage: React.FC<Props> = ({ children, data }) => {
         <MainSection />
         <FeaturedSection data={data} />
       </div>
-    </div>
+    </section>
   );
 };
