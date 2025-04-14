@@ -29,7 +29,7 @@ export const Header: React.FC<Props> = (props) => {
     setFlag(!flag);
   }
   return (
-    <header className={`w-full h-[220px] px-20 py-20 flex justify-between z-[3] bg-[#313638] ${props.sticky ? "sticky top-0" : "static"
+    <header className={`w-full h-[250px] px-10 flex justify-between items-center z-[3] bg-[#313638] ${props.sticky ? "sticky top-0" : "static"
       }`}>
       <Link href="/">
         <IconContainer>

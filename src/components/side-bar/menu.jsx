@@ -10,11 +10,6 @@ import { useRecoilState } from "recoil";
 import BurguerButton from './burgerButton'
 import { CancelButton } from "./../../ui/buttons";
 import { TinyText } from "./../../ui/text";
-import {
-  SidebarLink,
-  UserSessionWrapper,
-} from "./styled";
-import styled from 'styled-components'
 
 
 function Navbar() {
@@ -23,10 +18,8 @@ function Navbar() {
   const router = useRouter();
 
   const [clicked, setClicked] = useState(false)
-  const handleClick = () => {
-    //cuando esta true lo pasa a false y vice versa
-    setClicked(!clicked)
-  }
+  const handleClick = () => setClicked(!clicked)
+
   function handleRedirectToLogin() {
     router.push("/login");
   }
@@ -35,102 +28,52 @@ function Navbar() {
     removeToken();
   }
 
-
   return (
     <>
-
       <BurguerButton clicked={clicked} handleClick={handleClick} />
 
-      <NavContainer className='nav-container'>
-        <div className={`links ${clicked ? 'active' : ''}`}>
-          <Link style={{ textDecoration: 'none' }} onClick={handleClick} href="/login">
-
+      <nav className="w-full h-screen flex justify-center items-center overflow-hidden transition-all duration-500">
+        <div
+          className={`
+            absolute top-[-700px] left-[-2000px] right-0 
+            mx-auto text-center transition-all duration-500
+            ${clicked ? 'top-[220px] left-0 w-full bg-[#313638] block' : ''}
+            lg:static lg:flex lg:items-center lg:justify-center
+          `}
+        >
+          <Link
+            href="/login"
+            onClick={handleClick}
+            className="text-white text-2xl block lg:text-[1.5rem] lg:p-3 no-underline"
+          >
             Ingresar
-
           </Link>
-          <Link style={{ textDecoration: 'none' }} onClick={handleClick} href="/profile">
-
+          <Link
+            href="/profile"
+            onClick={handleClick}
+            className="text-white text-2xl block lg:text-[1.5rem] lg:p-3 no-underline"
+          >
             Mi perfil
-
           </Link>
-          <Link style={{ textDecoration: 'none' }} onClick={handleClick} href="/">
+          <Link
+            href="/"
+            onClick={handleClick}
+            className="text-white text-2xl block lg:text-[1.5rem] lg:p-3 no-underline"
+          >
             Buscar
           </Link>
-          <>
-            {userMail && token ? (
-              <UserSessionWrapper >
-                <TinyText>{userMail}</TinyText>
-                <CancelButton onClick={handleLogOut}>
-                  Cerrar sesion
-                </CancelButton>
-              </UserSessionWrapper>
-            ) : null}
-          </>
+
+          {userMail && token && (
+            <div className="mx-auto max-w-[125px] relative flex flex-col justify-center items-center pb-5 text-white lg:text-black">
+              <TinyText>{userMail}</TinyText>
+              <CancelButton onClick={handleLogOut}>Cerrar sesión</CancelButton>
+            </div>
+
+          )}
         </div>
-      </NavContainer>
+      </nav>
     </>
   )
 }
 
 export default Navbar
-
-const NavContainer = styled.nav`
-  width:100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height:100vh;
-  overflow: hidden;
-  transition: all .5s ease;
-  .links{
-    position: absolute;
-    top: -700px;
-    left: -2000px;
-    right: 0;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    transition: all .5s ease;
-    a{
-      color: white;
-      font-size: 2rem;
-      display: block;
-      
-    }
-    @media(min-width: 960px){
-      position: inherit;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      
-    a{
-      font-size: 1.5rem;
-      padding: 12px;
-    }
-    
-     
-    }
-
-  }
-  .links.active{
-    width: 100%;
-    display: block;
-    position: absolute;
-    margin-left: auto;
-    margin-right: auto;
-    top: 220px;
-    left: 0;
-    right: 0;
-    text-align: center;
-    opacity: 1;
-    background-color:#313638;
-    
-    a{
-      width: 100%;
-      font-size: 1.5rem;
-      margin-top: 1rem;
-      color: white;
-      
-    }
-  }
-`

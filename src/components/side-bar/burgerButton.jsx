@@ -1,72 +1,17 @@
 import React from 'react'
-import styled from 'styled-components'
+import styles from './BurguerButton.module.css'
+// vamos a agregar algunas reglas específicas acá
 
-function BurguerButton(props) {
+function BurguerButton({ handleClick, clicked }) {
   return (
-    <Burguer>
-      <div  onClick={props.handleClick} 
-            className={`icon nav-icon-5 ${props.clicked ? 'open' : ''}`}
-      >
-        <span></span>
-        <span></span>
-        <span></span>
+    <div className="w-[35px] h-[30px] relative flex cursor-pointer" onClick={handleClick}>
+      <div className={`icon ${styles.navIcon5} ${clicked ? styles.open : ''}`}>
+        <span className="burguer-line"></span>
+        <span className="burguer-line"></span>
+        <span className="burguer-line"></span>
       </div>
-    </Burguer>
+    </div>
   )
 }
 
 export default BurguerButton
-
-const Burguer = styled.div`
-  /* nav-icon-5 */
-.nav-icon-5{
-  width: 35px;
-  height: 30px;
-  position: relative;
-  cursor: pointer;
-  display: flex;
-
-}
-.nav-icon-5 span{
-  background-color:#fff;
-  position: absolute;
-  border-radius: 2px;
-  transition: .3s cubic-bezier(.8, .5, .2, 1.4);
-  width:100%;
-  height: 4px;
-  transition-duration: 500ms
-}
-.nav-icon-5 span:nth-child(1){
-  top:0px;
-  left: 0px;
-}
-.nav-icon-5 span:nth-child(2){
-  top:13px;
-  left: 0px;
-  opacity:1;
-}
-.nav-icon-5 span:nth-child(3){
-  bottom:0px;
-  left: 0px;
-}
-.nav-icon-5:not(.open):hover span:nth-child(1){
-  transform: rotate(-3deg) scaleY(1.1);
-}
-.nav-icon-5:not(.open):hover span:nth-child(2){
-  transform: rotate(3deg) scaleY(1.1);
-}
-.nav-icon-5:not(.open):hover span:nth-child(3){
-  transform: rotate(-4deg) scaleY(1.1);
-}
-.nav-icon-5.open span:nth-child(1){
-  transform: rotate(45deg);
-  top: 13px;
-}
-.nav-icon-5.open span:nth-child(2){
-  opacity:0;
-}
-.nav-icon-5.open span:nth-child(3){
-  transform: rotate(-45deg);
-  top: 13px;
-}
-`
