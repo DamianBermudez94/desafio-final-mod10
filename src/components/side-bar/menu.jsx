@@ -31,47 +31,44 @@ function Navbar() {
   return (
     <>
       <BurguerButton clicked={clicked} handleClick={handleClick} />
-
-      <nav className="w-full h-screen flex justify-center items-center overflow-hidden transition-all duration-500">
-        <div
-          className={`
-            absolute top-[-700px] left-[-2000px] right-0 
-            mx-auto text-center transition-all duration-500
-            ${clicked ? 'top-[220px] left-0 w-full bg-[#313638] block' : ''}
-            lg:static lg:flex lg:items-center lg:justify-center
-          `}
+      {/* Menú hamburguesa (solo mobile) */}
+      <nav
+        className={`flex flex-col items-center gap-4 overflow-hidden transition-all duration-500 ease-in-out
+          ${clicked ? "max-h-[400px] py-4" : "max-h-0"}
+          lg:max-h-full lg:flex-row lg:justify-center lg:py-0 lg:gap-8 lg:flex
+        `}
+      >
+        <Link
+          href="/login"
+          onClick={() => setClicked(false)}
+          className="text-xl hover:underline"
         >
-          <Link
-            href="/login"
-            onClick={handleClick}
-            className="text-white text-2xl block lg:text-[1.5rem] lg:p-3 no-underline"
-          >
-            Ingresar
-          </Link>
-          <Link
-            href="/profile"
-            onClick={handleClick}
-            className="text-white text-2xl block lg:text-[1.5rem] lg:p-3 no-underline"
-          >
-            Mi perfil
-          </Link>
-          <Link
-            href="/"
-            onClick={handleClick}
-            className="text-white text-2xl block lg:text-[1.5rem] lg:p-3 no-underline"
-          >
-            Buscar
-          </Link>
+          Ingresar
+        </Link>
+        <Link
+          href="/profile"
+          onClick={() => setClicked(false)}
+          className="text-xl hover:underline"
+        >
+          Mi perfil
+        </Link>
+        <Link
+          href="/"
+          onClick={() => setClicked(false)}
+          className="text-xl hover:underline"
+        >
+          Buscar
+        </Link>
 
-          {userMail && token && (
-            <div className="mx-auto max-w-[125px] relative flex flex-col justify-center items-center pb-5 text-white lg:text-black">
-              <TinyText>{userMail}</TinyText>
-              <CancelButton onClick={handleLogOut}>Cerrar sesión</CancelButton>
-            </div>
-
-          )}
-        </div>
+        {userMail && token && (
+          <div className="text-center lg:text-left">
+            <TinyText>{userMail}</TinyText>
+            <CancelButton onClick={handleLogOut}>Cerrar sesión</CancelButton>
+          </div>
+        )}
       </nav>
+
+
     </>
   )
 }
