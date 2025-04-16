@@ -29,13 +29,13 @@ function Navbar() {
   }
 
   return (
-    <>
+    <div className='w-full flex justify-center'>
       <BurguerButton clicked={clicked} handleClick={handleClick} />
       {/* Menú hamburguesa (solo mobile) */}
       <nav
-        className={`flex flex-col items-center gap-4 overflow-hidden transition-all duration-500 ease-in-out
+        className={`flex flex-col items-center gap-4 bg-amber-800 w-[500px] overflow-hidden transition-all duration-500 ease-in-out
           ${clicked ? "max-h-[400px] py-4" : "max-h-0"}
-          lg:max-h-full lg:flex-row lg:justify-center lg:py-0 lg:gap-8 lg:flex
+          md:max-h-full md:flex-row md:justify-center md:py-0 lg:gap-8 md:flex
         `}
       >
         <Link
@@ -67,9 +67,7 @@ function Navbar() {
           </div>
         )}
       </nav>
-
-
-    </>
+    </div>
   )
 }
 

@@ -6,13 +6,6 @@ import { useRouter } from "next/router";
 import React, { useState } from "react";
 
 
-import {
-  BaseHeader,
-  BurgerWrapper,
-  FormWrapper,
-  IconContainer,
-} from "./styled";
-
 type Props = {
   form: boolean;
   sticky?: boolean;
@@ -29,15 +22,14 @@ export const Header: React.FC<Props> = (props) => {
     setFlag(!flag);
   }
   return (
-    <header className={`w-full h-[250px] px-10 flex justify-between items-center z-[3] bg-[#313638] ${props.sticky ? "sticky top-0" : "static"
+    <header className={`w-full h-[150px] px-10 flex justify-between items-center z-[3] bg-[#313638] ${props.sticky ? "sticky top-0" : "static"
       }`}>
-      <Link href="/">
-        <IconContainer>
-          <WhiteLogoIcon></WhiteLogoIcon>
-        </IconContainer>
-      </Link>
-      <div className="place-self-end md:hidden" onClick={toggleMenu}>
-
+      <div className="m-5">
+        <Link href="/">
+          <div className="place-self-start">
+            <WhiteLogoIcon></WhiteLogoIcon>
+          </div>
+        </Link>
       </div>
 
       {props.form ? (

@@ -4,7 +4,7 @@ import React from 'react'
 function BurguerButton({ handleClick, clicked }) {
   return (
     <div
-      className="w-[35px] h-[30px] flex flex-col justify-between cursor-pointer group"
+      className="w-[35px] h-[30px] flex flex-col justify-between cursor-pointer group md:hidden"
       onClick={handleClick}
     >
       <span
