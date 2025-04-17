@@ -11,14 +11,13 @@ type Props = {
 
 export const HomePage: React.FC<Props> = ({ children, data }) => {
   return (
-    <section className="relative w-full h-full flex flex-col justify-center items-center text-center">
+    <section className="relative top-0 w-full h-full flex flex-col justify-center items-center text-center">
       <div className="z-[1] w-full h-full">
         <img
           src="/background.jpg"
           alt="background-image"
           className="object-cover w-full h-full absolute top-0 flex flex-col justify-center items-center bg-cover"
         />
-        <p className="">hola</p>
       </div>
       <div className="z-[2] relative w-full h-full">
         <MainSection />

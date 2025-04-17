@@ -33,10 +33,10 @@ function Navbar() {
       <BurguerButton clicked={clicked} handleClick={handleClick} />
       {/* Menú hamburguesa (solo mobile) */}
       <nav
-        className={`flex flex-col items-center gap-4 bg-amber-800 w-[500px] overflow-hidden transition-all duration-500 ease-in-out
-          ${clicked ? "max-h-[400px] py-4" : "max-h-0"}
-          md:max-h-full md:flex-row md:justify-center md:py-0 lg:gap-8 md:flex
-        `}
+        className={`fixed top-38 right-0 bg-amber-800 flex flex-col gap-5 transition-all duration-300 ease-in-out
+        ${clicked ? "w-full h-full p-6 " : "w-0 h-full overflow-hidden"}
+        md:static md:w-auto md:h-auto md:flex-row
+      `}
       >
         <Link
           href="/login"

@@ -8,6 +8,7 @@ type Props = {
   default?: string;
   required?: boolean;
   value?: string;
+
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
@@ -19,7 +20,9 @@ const Input: React.FC<Props> = ({
   required,
   value,
   onChange,
+  register
 }) => {
+  const inputProps = register ? register(name, { required }) : {};
   return (
     <Label style={{ display: "flex", flexDirection: "column" }}>
       {label}
@@ -29,6 +32,8 @@ const Input: React.FC<Props> = ({
         value={value}
         onChange={onChange}
         required={required}
+        {...inputProps}
+
       />
     </Label>
   );

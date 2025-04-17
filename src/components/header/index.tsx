@@ -22,22 +22,26 @@ export const Header: React.FC<Props> = (props) => {
     setFlag(!flag);
   }
   return (
-    <header className={`w-full h-[150px] px-10 flex justify-between items-center z-[3] bg-[#313638] ${props.sticky ? "sticky top-0" : "static"
-      }`}>
-      <div className="m-5">
-        <Link href="/">
-          <div className="place-self-start">
-            <WhiteLogoIcon></WhiteLogoIcon>
-          </div>
-        </Link>
-      </div>
+    <header className={`w-full h-[150px] z-10 px-10 flex items-center justify-between bg-[#313638] ${props.sticky ? "sticky top-0" : "static"}`}>
+      {/* Logo */}
+      <Link href="/">
+        <WhiteLogoIcon />
+      </Link>
 
-      {props.form ? (
-        <div className="w-1/2 max-w-[360px] mx-auto col-span-2 md:col-span-1">
-          <SearchForm submit={handleSubmit} type="secondary"></SearchForm>
+      {/* Formulario centrado */}
+      {props.form && (
+        <div className="flex-1 flex justify-center">
+          <div className="w-full max-w-[360px]">
+            <SearchForm submit={handleSubmit} type="secondary" />
+          </div>
         </div>
-      ) : null}
-      <SideBar toggle={toggleMenu} show={flag}></SideBar>
+      )}
+
+      {/* Botón del menú o sidebar */}
+      <div className="ml-auto">
+        <SideBar toggle={toggleMenu} show={flag} />
+      </div>
     </header>
+
   );
 };
