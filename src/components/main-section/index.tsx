@@ -1,7 +1,7 @@
 import { SearchForm } from "src/components/search-form";
 import { useRouter } from "next/router";
 import React from "react";
-import { Title } from "src/ui/text";
+
 import { MainSectionWrapper, TitleWrapper } from "./styled";
 
 type Props = {
@@ -17,12 +17,12 @@ export const MainSection: React.FC<Props> = ({ children }) => {
   }
   return (
     <MainSectionWrapper>
-      <TitleWrapper>
-        <Title>
+      <div>
+        <h1 className="text-6xl">
           Deco <br></br>&<br></br>Home
-        </Title>
+        </h1>
         <SearchForm type="primary" submit={handleSubmit}></SearchForm>
-      </TitleWrapper>
+      </div>
     </MainSectionWrapper>
   );
 };

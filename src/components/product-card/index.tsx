@@ -27,15 +27,28 @@ export const ProductCard: React.FC<Props> = (props) => {
   }
 
   return (
-    <CardWrapper onClick={handleClick}>
-      <CardImgWrapper>
-        <CardImg alt={props.title + "-image"} src={props.url}></CardImg>
-      </CardImgWrapper>
-      <CardTextWrapper>
+    <div className="
+    cursor-pointer
+    max-w-[322px]
+    max-h-[322px]
+    flex flex-col
+    rounded-[6px]
+    border border-[rgba(0,0,0,0.5)]
+    shadow-[0_5px_15px_rgba(0,0,0,0.35)]
+    hover:shadow-[0_5px_15px_rgba(0,0,0,0.8)]
+    active:shadow-[0_5px_15px_#f09d51]
+    transition-shadow duration-300 ease-in-out
+    overflow-hidden
+    bg-card-bg
+  " onClick={handleClick}>
+
+      <img className="w-full h-full object-cover" alt={props.title + "-image"} src={props.url}></img>
+
+      <div className="bg-gray-600 flex flex-col p-5 justify-between">
         <LargeText>{props.title}</LargeText>
         <SubTitle>${props.price}</SubTitle>
         <SubTitle>${props.type}</SubTitle>
-      </CardTextWrapper>
-    </CardWrapper>
+      </div>
+    </div>
   );
 };

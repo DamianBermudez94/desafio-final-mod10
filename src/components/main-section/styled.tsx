@@ -12,7 +12,3 @@ export const MainSectionWrapper = styled.div`
   padding: 0 36px;
   background-color: #00000075;
 `;
-export const TitleWrapper = styled.div`
-  width: 100%;
-  max-width: 400px;
-`;

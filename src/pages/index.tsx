@@ -8,7 +8,7 @@ const Home: NextPage = ({ data }: any) => {
   return (
     <>
       <Head>
-        <title>Compralo Mueblería</title>
+        <title>Deco & Home</title>
       </Head>
       <Layout form={false} sticky={true}>
         <HomePage data={data}></HomePage>

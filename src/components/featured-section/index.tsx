@@ -10,11 +10,11 @@ type Props = {
 export const FeaturedSection: React.FC<Props> = ({ children, data }) => {
 
   return (
-    <FeaturedWrapper>
-      <SectionTitleWrapper>
-        <SubTitle>Productos Destacados</SubTitle>
-      </SectionTitleWrapper>
-      <CardsWrapper>
+    <section className="bg-amber-50 p-10">
+      <div className="text-center pb-6">
+        <h2 className="text-4xl">Productos Destacados</h2>
+      </div>
+      <div className="bg-amber-50 flex flex-col flex-wrap md:flex-row justify-center gap-5">
 
         {data?.results
 
@@ -32,7 +32,7 @@ export const FeaturedSection: React.FC<Props> = ({ children, data }) => {
             );
           })
           : null}
-      </CardsWrapper>
-    </FeaturedWrapper>
+      </div>
+    </section>
   );
 };

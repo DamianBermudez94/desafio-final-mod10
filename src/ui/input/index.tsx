@@ -16,7 +16,6 @@ const Input: React.FC<Props> = ({
   name,
   label,
   placeHolder,
-  default: defaultValue,
   required,
   value,
   onChange,
