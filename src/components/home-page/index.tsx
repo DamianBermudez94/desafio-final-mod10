@@ -2,7 +2,6 @@ import React from "react";
 import { FeaturedSection } from "src/components/featured-section";
 import { MainSection } from "src/components/main-section";
 
-
 type Props = {
   children?: React.ReactNode;
   data: any;
@@ -10,13 +9,13 @@ type Props = {
 
 export const HomePage: React.FC<Props> = ({ data }) => {
   return (
-    <section className="relative w-full flex flex-col justify-center items-center text-center overflow-hidden">
+    <section className="relative flex flex-col items-center justify-center w-full overflow-hidden text-center">
       {/* Imagen de fondo */}
       <div className="absolute inset-0 z-0">
         <img
           src="/img-home.webp"
           alt="Mueblería - Home & Deco"
-          className="w-full h-full object-cover object-bottom opacity-70"
+          className="object-cover object-bottom w-full h-full opacity-70"
         />
         {/* Overlay opcional para oscurecer */}
         <div className="absolute inset-0 bg-black/20" />
@@ -28,6 +27,5 @@ export const HomePage: React.FC<Props> = ({ data }) => {
         <FeaturedSection data={data} />
       </div>
     </section>
-
   );
 };

@@ -23,13 +23,8 @@ export const SearchPage: React.FC<Props> = ({ children, query }) => {
     "/search?q=" + query + "&offset=" + offset + "&limit=4",
     fetchApi
   );
- 
-  
-console.log("soy la data",data);
 
   const results = data?.results.results;
-  console.log("soy la data asd",data);
-console.log("soy el resultado de la data",results);
 
   //recibo el numero de pag
   function goToPage(page: number) {
@@ -37,7 +32,7 @@ console.log("soy el resultado de la data",results);
     //aumento el offset de a 3 por pagina
     //ya que cada pag tiene 3 productos
     for (let index = 1; index < page; index++) {
-      newOffset = newOffset + 3;
+      newOffset = newOffset + 4;
     }
 
     //seteo el nuevo offset y rerenderizo
@@ -48,13 +43,11 @@ console.log("soy el resultado de la data",results);
   function generatePages() {
     //checkeo el total de productos
     const total = data?.results.pagination.total;
-    console.log("Soy el total",total);
-    
+
     //obtengo el total de paginas dividiendo por 3 productos por pagina
     const pages = Math.ceil(total / 3);
     const result = [];
-    
-    
+
     //Genero los divs que me llevan a cada pagina
     for (let index = 0; index < pages; index++) {
       result.push(
@@ -68,10 +61,7 @@ console.log("soy el resultado de la data",results);
           {index + 1}
         </PageNumber>
       );
-      
     }
-    console.log("soy los resultados",result);
-    
     return result;
   }
 
@@ -97,7 +87,9 @@ console.log("soy el resultado de la data",results);
             ) : (
               <ProductNotFoundWrapper>
                 <SubTitle>No se encontraron resultados</SubTitle>
-                <BodyText>Sugerencias: Silla, Mesa, Alfombra, Lamparas.</BodyText>
+                <BodyText>
+                  Sugerencias: Silla, Mesa, Alfombra, Lamparas.
+                </BodyText>
               </ProductNotFoundWrapper>
             )
           ) : (

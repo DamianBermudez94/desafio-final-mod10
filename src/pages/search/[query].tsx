@@ -10,7 +10,7 @@ const Search: NextPage = () => {
   return (
     <Layout form={true}>
       <Head>
-        <title>Resultados - compralo</title>
+        <title className="bg-amber-600">Resultados - compralo</title>
       </Head>
       <SearchPage query={query as string}></SearchPage>
     </Layout>

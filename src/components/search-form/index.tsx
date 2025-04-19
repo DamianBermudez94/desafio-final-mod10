@@ -1,7 +1,7 @@
 import React from "react";
 import { SecondaryButton, TertiaryButton } from "./../../ui/buttons";
 import Input from "./../../ui/input";
-import { BaseForm, FormButtonWrapper, FormInputWrapper } from "./styled";
+
 import { useForm } from "react-hook-form";
 
 type Props = {
@@ -23,8 +23,12 @@ export const SearchForm: React.FC<Props> = ({
     formState: { errors },
   } = useForm();
   return (
-    <BaseForm onSubmit={handleSubmit(submit)} autoComplete={"off"}>
-      <FormInputWrapper>
+    <form
+      className="flex flex-col w-full gap-4 py-5 m-auto md:flex-row"
+      onSubmit={handleSubmit(submit)}
+      autoComplete={"off"}
+    >
+      <div>
         <Input
           default={value}
           name="query"
@@ -32,14 +36,14 @@ export const SearchForm: React.FC<Props> = ({
           register={register}
           placeHolder="Encontra tu producto"
         ></Input>
-      </FormInputWrapper>
-      <FormButtonWrapper>
+      </div>
+      <div>
         {type == "primary" ? (
           <SecondaryButton>Buscar</SecondaryButton>
         ) : (
           <TertiaryButton>Buscar</TertiaryButton>
         )}
-      </FormButtonWrapper>
-    </BaseForm>
+      </div>
+    </form>
   );
 };
