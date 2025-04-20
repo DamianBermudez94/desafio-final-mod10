@@ -1,17 +1,30 @@
 const withSvgr = require("next-svgr");
 
-const nextConfig = withSvgr({
+/** @type {import('next').NextConfig} */
+const baseConfig = {
   reactStrictMode: true,
   swcMinify: true,
   compiler: {
-    styledComponents: true, // Habilita soporte para styled-components
+    styledComponents: true,
   },
-  webpackDevMiddleware: config => {
+  images: {
+    remotePatterns: [
+
+      {
+        protocol: "https",
+        hostname: "dl.airtable.com",
+        pathname: "/**",
+        domains: ["dl.airtable.com"],
+      },
+    ],
+  },
+  webpackDevMiddleware: (config) => {
     config.watchOptions = {
-      poll: 300, // Ajusta el tiempo de revisión según tus necesidades
+      poll: 300,
     };
     return config;
   },
-});
+};
 
-module.exports = nextConfig;
+module.exports = withSvgr(baseConfig);
+

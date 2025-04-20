@@ -21,33 +21,37 @@ export const Header: React.FC<Props> = (props) => {
     setFlag(!flag);
   }
   return (
-    <header
-      className={`w-full h-auto z-20 px-4 p-10 flex flex-wrap items-center justify-between bg-white" ${
-        props.sticky ? "sticky top-0" : "static"
-      }`}
+    <div
+      className={`${props.sticky ? "sticky top-0 z-20 bg-white" : "static"}`}
     >
-      {/* Logo */}
-      <Link href="/" className="mr-auto">
-        <WhiteLogoIcon />
-      </Link>
+      <header
+        className={
+          "w-full h-auto z-20 p-10 flex flex-wrap items-center justify-between m-auto lg:w-[1400px] bg-white"
+        }
+      >
+        {/* Logo */}
+        <Link href="/" className="mr-auto">
+          <WhiteLogoIcon />
+        </Link>
 
-      <div className="w-full mt-2 sm:w-auto">
-        <SearchForm type="primary" submit={handleSubmit}></SearchForm>
-      </div>
-
-      {/* Formulario centrado */}
-      {props.form && (
-        <div className="flex justify-center flex-1 bg-amber-950">
-          <div className="w-full max-w-[360px]">
-            <SearchForm submit={handleSubmit} type="secondary" />
-          </div>
+        <div className="w-full mt-2 sm:w-auto">
+          <SearchForm type="primary" submit={handleSubmit}></SearchForm>
         </div>
-      )}
 
-      {/* Botón del menú o sidebar */}
-      <div className="ml-auto">
-        <SideBar toggle={toggleMenu} show={flag} />
-      </div>
-    </header>
+        {/* Formulario centrado */}
+        {props.form && (
+          <div className="flex justify-center flex-1 bg-amber-950">
+            <div className="w-full max-w-[360px]">
+              <SearchForm submit={handleSubmit} type="secondary" />
+            </div>
+          </div>
+        )}
+
+        {/* Botón del menú o sidebar */}
+        <div className="ml-auto">
+          <SideBar toggle={toggleMenu} show={flag} />
+        </div>
+      </header>
+    </div>
   );
 };

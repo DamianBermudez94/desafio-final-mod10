@@ -16,15 +16,15 @@ import {
 } from "./styled";
 
 type Props = {
-  data: ProductoType;
+  producto: ProductoType;
   notFound: boolean;
 };
 
-
-export const ProductDetailPage: React.FC<Props> = (props) => {
+export const ProductDetailPage: React.FC<Props> = ({ producto, notFound }) => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [orderError, setOrderError] = useState(false);
+  console.log(producto);
 
   async function buyProduct() {
     setOrderError(false);
@@ -35,10 +35,8 @@ export const ProductDetailPage: React.FC<Props> = (props) => {
       return;
     }
     try {
-      const res = await getOrderUrl(props.data.objectID);
-      console.log("Producto:", props.data?.Name, props.data?.Unit_cost);
-      console.log("Producto:", props.data?.Name, props.data?.Images);
-
+      const res = await getOrderUrl(producto.objectID);
+      console.log(res);
 
       window.location.href = res.url;
     } catch (error) {
@@ -49,36 +47,35 @@ export const ProductDetailPage: React.FC<Props> = (props) => {
 
   return (
     <>
-      {props.data?.objectID ? (
+      {producto?.objectID ? (
         <DetailWrapper>
           <DetailImgWrapper>
-            <DetailImg src={props.data.Images?.[0]?.url || "/no-image.jpg"} />
+            <DetailImg
+              src={producto.Images?.[0]?.filename || "/no-image.jpg"}
+            />
           </DetailImgWrapper>
           <DetailDescriptionWrapper>
             <ProductDetailTitle style={{ margin: "0" }}>
-              {props.data.Name}
+              {producto.Name}
             </ProductDetailTitle>
-            <SubTitle style={{ margin: "0" }}>${props.data.Unit_cost}</SubTitle>
+            <SubTitle style={{ margin: "0" }}>${producto.Unit_cost}</SubTitle>
             <DetailButtonWrapper>
-              <PrimaryButtonBig
-                disabled={loading}
-                onClick={buyProduct}
-              >
+              <PrimaryButtonBig disabled={loading} onClick={buyProduct}>
                 {loading ? <Spinner /> : "Comprar"}
               </PrimaryButtonBig>
               {orderError && (
                 <BodyText style={{ color: "red" }}>
-                  🛑 Ocurrió un error al procesar la compra. Por favor intentá nuevamente.
+                  🛑 Ocurrió un error al procesar la compra. Por favor intentá
+                  nuevamente.
                 </BodyText>
               )}
-
             </DetailButtonWrapper>
-            <BodyText>{props.data.Description}</BodyText>
+            <BodyText>{producto.Description}</BodyText>
           </DetailDescriptionWrapper>
         </DetailWrapper>
       ) : (
         <>
-          {props.notFound ? (
+          {notFound ? (
             <NotFoundWrapper>
               <SubTitle>Producto no encontrado</SubTitle>
             </NotFoundWrapper>

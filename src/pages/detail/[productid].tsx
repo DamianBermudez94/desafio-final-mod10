@@ -1,17 +1,22 @@
 import { Layout } from "src/components/layout";
 import { ProductDetailPage } from "src/components/product-detail-page";
 import { fetchApi } from "src/lib/api/api";
-import type { GetStaticProps, GetStaticPaths, GetStaticPropsContext, NextPage } from "next";
+import type {
+  GetStaticProps,
+  GetStaticPaths,
+  GetStaticPropsContext,
+  NextPage,
+} from "next";
 import Head from "next/head";
 import { ProductoType } from "src/types"; // Asegurate de tener este tipo
 
 type Props = {
-  data: ProductoType;
+  producto: ProductoType;
   error?: boolean;
 };
 
-const ProductDetail: NextPage<Props> = ({ data, error }) => {
-  if (!data && !error) {
+const ProductDetail: NextPage<Props> = ({ producto, error }) => {
+  if (!producto && !error) {
     return <div>Cargando...</div>;
   }
 
@@ -20,15 +25,16 @@ const ProductDetail: NextPage<Props> = ({ data, error }) => {
       <Head>
         <title>Detalle del Producto - Compralo</title>
       </Head>
-      <ProductDetailPage data={data} notFound={!!error} />
+      <ProductDetailPage producto={producto} notFound={!!error} />
     </Layout>
   );
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
   try {
-    const res = await fetch("https://backend-ecommerce-desafiom9.vercel.app/api/products/all/id");
-
+    const res = await fetch(
+      "https://backend-ecommerce-desafiom9.vercel.app/api/products/all/id"
+    );
 
     const ids: string[] = await res.json();
 
@@ -49,7 +55,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 };
 
-export const getStaticProps: GetStaticProps = async (context: GetStaticPropsContext) => {
+export const getStaticProps: GetStaticProps = async (
+  context: GetStaticPropsContext
+) => {
   const id = context.params?.productid;
 
   if (!id || typeof id !== "string") {
@@ -59,6 +67,8 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
 
   try {
     const data: ProductoType = await fetchApi("/products/" + id);
+    console.log(data);
+
     if (!data) {
       return { notFound: true };
     }

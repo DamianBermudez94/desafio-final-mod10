@@ -29,11 +29,11 @@ function Navbar() {
   }
 
   return (
-    <div className='w-full flex justify-center'>
+    <div className='flex justify-center w-full'>
       <BurguerButton clicked={clicked} handleClick={handleClick} />
       {/* Menú hamburguesa (solo mobile) */}
       <nav
-        className={`fixed top-36 right-0 flex flex-col gap-5 items-center transition-all duration-300 ease-in-out
+        className={`fixed top-76 right-0 flex flex-col gap-5 items-center transition-all duration-300 ease-in-out
         ${clicked ? "w-full h-full p-6 bg-neutral-50" : "w-0 h-full overflow-hidden"}
         md:static md:w-auto md:h-auto md:flex-row
       `}

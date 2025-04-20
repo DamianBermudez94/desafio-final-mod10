@@ -4,6 +4,21 @@ export type ProductoType = {
     Name: string;
     Unit_cost: number;
     Description: string;
-    Images: { url: string }[];
-    type: string
+    Images: {
+        id: string;
+        url: string;
+        filename: string;
+        width: number;
+        height: number;
+        size: number;
+        type: string;
+        thumbnails: {
+            small: { url: string; width: number; height: number };
+            large: { url: string; width: number; height: number };
+            full: { url: string; width: number; height: number };
+        };
+    }[];
+    Type: string,
+    Color: string,
+    In_stock: string
 };
