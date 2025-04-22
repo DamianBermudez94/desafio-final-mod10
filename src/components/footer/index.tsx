@@ -1,28 +1,24 @@
-
 import React from "react";
-import { InstagramLogoIcon, FacebookLogoIcon, WhiteLogoIcon } from "./../../ui/icons";
-import { BodyText, LargeTextBold } from "./../../ui/text";
 import {
-  FooterWrapper,
-
-  SocialMediaWrapper,
-  StyledLink
-} from "./styled";
-
+  InstagramLogoIcon,
+  FacebookLogoIcon,
+  WhiteLogoIcon,
+} from "./../../ui/icons";
 export const Footer: React.FC = () => {
   return (
-    <FooterWrapper>
-      <WhiteLogoIcon></WhiteLogoIcon>
-      <SocialMediaWrapper>
-        <LargeTextBold>Redes</LargeTextBold>
-        <StyledLink  href={"https://damianbermudezdev.es/"} target={"_blank"}>
-            <FacebookLogoIcon></FacebookLogoIcon>
-        </StyledLink>
-        <StyledLink href={"https://damianbermudezdev.es/"} target={"_blank"}>
-            <InstagramLogoIcon></InstagramLogoIcon>
-           
-        </StyledLink>
-      </SocialMediaWrapper>
-    </FooterWrapper>
+    <footer className="flex flex-col items-center justify-between w-full h-auto bg-neutral-600">
+      <div className="m-3">
+        <WhiteLogoIcon></WhiteLogoIcon>
+      </div>
+
+      <div className="flex items-center gap-5 mt-4">
+        <a href="https://damianbermudezdev.es/" target="_blank">
+          <FacebookLogoIcon />
+        </a>
+        <a href="https://damianbermudezdev.es/" target="_blank">
+          <InstagramLogoIcon />
+        </a>
+      </div>
+    </footer>
   );
 };

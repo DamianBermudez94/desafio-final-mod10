@@ -14,7 +14,7 @@ export const FeaturedSection: React.FC<Props> = ({ children, data }) => {
         <h2 className="text-4xl font-bold">Conoce nuestros productos</h2>
       </div>
 
-      <div className="flex flex-col flex-wrap justify-center gap-5 bg-amber-50 md:flex-row">
+      <div className="flex flex-col flex-wrap items-center justify-center gap-5 bg-amber-50 md:flex-row">
         {data?.results?.length ? (
           data.results.map((product) => (
             <ProductCard key={product.objectID} producto={product} />
