@@ -20,6 +20,7 @@ const Home: NextPage = ({ data }: any) => {
 export async function getStaticProps(context: GetStaticPropsContext) {
   try {
     const data = await fetchApi("/products/featured");
+    console.log(data);
 
     return {
       props: { data },

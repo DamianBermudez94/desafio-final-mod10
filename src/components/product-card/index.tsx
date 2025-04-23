@@ -13,7 +13,7 @@ export const ProductCard: React.FC<Props> = ({ producto }) => {
   const imageUrl = producto.Images?.[0]?.filename || producto.Images?.[0]?.url;
 
   function handleClick() {
-    router.push("/detail/" + producto.productId);
+    router.push(`/pegas/detail/${producto.productId}`);
   }
   console.log(producto);
 

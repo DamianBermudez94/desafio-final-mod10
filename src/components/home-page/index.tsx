@@ -13,7 +13,7 @@ export const HomePage: React.FC<Props> = ({ data }) => {
       {/* Imagen de fondo */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/img-home.webp"
+          src="./images/img-home.webp"
           alt="Mueblería - Home & Deco"
           className="object-cover object-bottom w-full h-full opacity-70"
         />

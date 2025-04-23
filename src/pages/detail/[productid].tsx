@@ -35,6 +35,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     const res = await fetch(
       "https://backend-ecommerce-desafiom9.vercel.app/api/products/all/id"
     );
+    console.log(res);
 
     const ids: string[] = await res.json();
 
@@ -60,6 +61,8 @@ export const getStaticProps: GetStaticProps = async (
 ) => {
   const id = context.params?.productid;
 
+  console.log("🧩 ID recibido en getStaticProps:", id);
+
   if (!id || typeof id !== "string") {
     console.warn("⚠️ No se encontró el ID del producto.");
     return { notFound: true };
@@ -67,15 +70,15 @@ export const getStaticProps: GetStaticProps = async (
 
   try {
     const data: ProductoType = await fetchApi("/products/" + id);
-    console.log(data);
+    console.log("📦 Producto recibido:", data);
 
     if (!data) {
       return { notFound: true };
     }
 
     return {
-      props: { data },
-      revalidate: 3600, // revalida cada 1 hora
+      props: { producto: data },
+      revalidate: 3600,
     };
   } catch (error) {
     console.error("❌ Error al obtener el producto:", error);

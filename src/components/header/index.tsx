@@ -1,6 +1,6 @@
 import { SearchForm } from "src/components/search-form";
 import { SideBar } from "src/components/side-bar";
-import { WhiteLogoIcon } from "src/ui/icons";
+import { ShoppingCart } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
@@ -26,12 +26,12 @@ export const Header: React.FC<Props> = (props) => {
     >
       <header
         className={
-          "w-full h-auto z-20 p-10 flex flex-wrap items-center justify-between m-auto lg:w-[1400px] bg-white"
+          "w-full h-auto z-20 p-10 px-11 flex flex-wrap items-center justify-between m-auto bg-white"
         }
       >
         {/* Logo */}
         <Link href="/" className="mr-auto">
-          <WhiteLogoIcon />
+          <ShoppingCart className="w-[50px] h-[50px]" />
         </Link>
 
         <div className="w-full mt-2 sm:w-auto">
