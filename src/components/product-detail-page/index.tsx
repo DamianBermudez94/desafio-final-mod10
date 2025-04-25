@@ -24,7 +24,7 @@ export const ProductDetailPage: React.FC<Props> = ({ producto, notFound }) => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [orderError, setOrderError] = useState(false);
-  console.log(producto);
+  console.log("Detalles del productos", producto.objectID);
 
   async function buyProduct() {
     setOrderError(false);
