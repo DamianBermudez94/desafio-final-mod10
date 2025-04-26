@@ -77,6 +77,17 @@ export async function getOrderUrl(id: string) {
   }
 }
 
+export async function getProduct() {
+  try {
+    const url = await fetchApi("/products", {
+      method: "POST",
+    });
+    // const json = await url.json()
+    return url;
+  } catch (error) {
+    throw error;
+  }
+}
 export function setToken(token: string) {
   localStorage.setItem("token", token);
 }

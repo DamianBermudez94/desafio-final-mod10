@@ -4,12 +4,12 @@ import { userMailState } from "src/recoil/atoms";
 import { removeToken } from "src/lib/api/api";
 import { useRouter } from "next/router";
 import Link from "next/link";
-
 import { useRecoilState } from "recoil";
 
+
+import { ShoppingCart, User } from 'lucide-react';
 import BurguerButton from './burgerButton'
-import { CancelButton } from "./../../ui/buttons";
-import { TinyText } from "./../../ui/text";
+
 
 
 function Navbar() {
@@ -29,41 +29,89 @@ function Navbar() {
   }
 
   return (
-    <div className='flex justify-center w-full'>
-      <BurguerButton clicked={clicked} handleClick={handleClick} />
-      {/* Menú hamburguesa (solo mobile) */}
+    <div className="fixed top-0 z-50 flex items-center justify-between w-full px-4 py-3 bg-white shadow-md">
+
+      {/* Logo */}
+      <Link href="/" className="text-2xl font-bold text-gray-800">
+        MiTienda
+      </Link>
+
+      {/* Botón Hamburguesa (Mobile) */}
+      <div className="md:hidden">
+        <BurguerButton clicked={clicked} handleClick={handleClick} />
+      </div>
+
+      {/* Menú de Navegación */}
       <nav
-        className={`fixed top-76 right-0 flex flex-col gap-5 items-center transition-all duration-300 ease-in-out
-        ${clicked ? "w-full h-full p-6 bg-neutral-50" : "w-0 h-full overflow-hidden"}
-        md:static md:w-auto md:h-auto md:flex-row
+        className={`fixed top-16 right-0 flex flex-col items-center gap-6 bg-neutral-50 transition-all duration-300 ease-in-out
+        ${clicked ? "w-full h-[calc(100vh-4rem)] p-6" : "w-0 h-[calc(100vh-4rem)] overflow-hidden"}
+        md:static md:flex md:flex-row md:w-auto md:h-auto md:bg-transparent md:p-0
       `}
       >
-        <Link
-          href="/login"
-          onClick={() => setClicked(false)}
-          className="text-xl hover:underline"
-        >
-          Ingresar
-        </Link>
-        <Link
-          href="/profile"
-          onClick={() => setClicked(false)}
-          className="text-xl hover:underline"
-        >
-          Mi perfil
-        </Link>
+
+
+
+        {/* Links principales */}
         <Link
           href="/"
           onClick={() => setClicked(false)}
-          className="text-xl hover:underline"
+          className="text-lg text-gray-600 transition hover:text-black"
         >
-          Buscar
+          Inicio
         </Link>
 
+
+        <Link
+          href="/product"
+          onClick={() => setClicked(false)}
+          className="text-lg text-gray-600 transition hover:text-black"
+        >
+          Productos
+        </Link>
+
+        {/* Solo mostrar "Ingresar" si NO hay usuario logueado */}
+        {!(userMail && token) && (
+          <Link
+            href="/login"
+            onClick={() => setClicked(false)}
+            className="text-lg text-gray-600 transition hover:text-black"
+          >
+            Ingresar
+          </Link>
+        )}
+
+
+        <Link
+          href="/profile"
+          onClick={() => setClicked(false)}
+          className="text-lg text-gray-600 transition hover:text-black"
+        >
+          Mi perfil
+        </Link>
+
+        {/* Carrito */}
+        <Link
+          href="/carrito"
+          onClick={() => setClicked(false)}
+          className="relative text-gray-600 hover:text-black"
+        >
+          <ShoppingCart className="w-6 h-6" />
+          {/* Badge de cantidad de productos */}
+          <span className="absolute flex items-center justify-center w-5 h-5 text-xs text-white bg-red-500 rounded-full -top-2 -right-2">3</span>
+        </Link>
+
+        {/* Usuario logueado */}
         {userMail && token && (
-          <div className="text-center lg:text-left">
-            <TinyText>{userMail}</TinyText>
-            <CancelButton onClick={handleLogOut}>Cerrar sesión</CancelButton>
+
+          <div className="flex flex-col items-center md:items-start">
+            <User className="w-5 h-5 text-gray-600" />
+            <span className="text-sm font-medium text-gray-700">{userMail}</span>
+            <button
+              onClick={handleLogOut}
+              className="px-3 py-1 text-xs text-white transition bg-red-500 rounded-full hover:bg-red-600"
+            >
+              Cerrar sesión
+            </button>
           </div>
         )}
       </nav>
