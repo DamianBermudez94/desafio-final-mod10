@@ -16,8 +16,6 @@ type Props = {
 };
 
 const ProductDetail: NextPage<Props> = ({ producto, error }) => {
-  console.log(producto);
-
   if (!producto && !error) {
     return <div>Cargando...</div>;
   }
@@ -33,13 +31,10 @@ const ProductDetail: NextPage<Props> = ({ producto, error }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  console.log("Hola");
-
   try {
     const res = await fetch(
       "https://backend-ecommerce-desafiom9.vercel.app/api/products/all/id"
     );
-    console.log("soy la respuesta de los productos", res);
 
     const ids: string[] = await res.json();
 
@@ -65,8 +60,6 @@ export const getStaticProps: GetStaticProps = async (
 ) => {
   const id = context.params?.productid;
 
-  console.log("🧩 ID recibido en getStaticProps:", id);
-
   if (!id || typeof id !== "string") {
     console.warn("⚠️ No se encontró el ID del producto.");
     return { notFound: true };
@@ -74,7 +67,6 @@ export const getStaticProps: GetStaticProps = async (
 
   try {
     const data: ProductoType = await fetchApi("/products/" + id);
-    console.log("📦 Producto recibido:", data);
 
     if (!data) {
       return { notFound: true };

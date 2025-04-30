@@ -1,12 +1,16 @@
 import React, { useState } from 'react'
-import { useCheckToken } from "src/hooks/hooks";
-import { userMailState } from "src/recoil/atoms";
-import { removeToken } from "src/lib/api/api";
-import { useRouter } from "next/router";
 import Link from "next/link";
 import { useRecoilState } from "recoil";
 
 
+import { useCheckToken } from "src/hooks/hooks";
+import { userMailState } from "src/recoil/atoms";
+import { removeToken } from "src/lib/api/api";
+import { useRouter } from "next/router";
+
+
+
+import { CartIcon } from "src/components/cartIcon/cartIcon";
 import { ShoppingCart, User } from 'lucide-react';
 import BurguerButton from './burgerButton'
 
@@ -67,6 +71,7 @@ function Navbar() {
           className="text-lg text-gray-600 transition hover:text-black"
         >
           Productos
+          <CartIcon />
         </Link>
 
         {/* Solo mostrar "Ingresar" si NO hay usuario logueado */}
@@ -87,17 +92,6 @@ function Navbar() {
           className="text-lg text-gray-600 transition hover:text-black"
         >
           Mi perfil
-        </Link>
-
-        {/* Carrito */}
-        <Link
-          href="/carrito"
-          onClick={() => setClicked(false)}
-          className="relative text-gray-600 hover:text-black"
-        >
-          <ShoppingCart className="w-6 h-6" />
-          {/* Badge de cantidad de productos */}
-          <span className="absolute flex items-center justify-center w-5 h-5 text-xs text-white bg-red-500 rounded-full -top-2 -right-2">3</span>
         </Link>
 
         {/* Usuario logueado */}

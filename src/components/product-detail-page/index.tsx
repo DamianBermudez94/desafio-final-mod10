@@ -15,6 +15,8 @@ import {
   ProductDetailTitle,
 } from "./styled";
 
+import { useCarrito } from "src/context/CarrtitoContext";
+
 type Props = {
   producto: ProductoType;
   notFound: boolean;
@@ -24,7 +26,7 @@ export const ProductDetailPage: React.FC<Props> = ({ producto, notFound }) => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [orderError, setOrderError] = useState(false);
-  console.log("Detalles del productos", producto.objectID);
+  const { agregarAlCarrito } = useCarrito();
 
   async function buyProduct() {
     setOrderError(false);
@@ -63,6 +65,9 @@ export const ProductDetailPage: React.FC<Props> = ({ producto, notFound }) => {
               <PrimaryButtonBig disabled={loading} onClick={buyProduct}>
                 {loading ? <Spinner /> : "Comprar"}
               </PrimaryButtonBig>
+              <button onClick={() => agregarAlCarrito(producto)}>
+                Agregar al carrito
+              </button>
               {orderError && (
                 <BodyText style={{ color: "red" }}>
                   🛑 Ocurrió un error al procesar la compra. Por favor intentá
