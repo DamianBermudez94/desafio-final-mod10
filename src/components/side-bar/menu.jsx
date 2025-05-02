@@ -71,7 +71,6 @@ function Navbar() {
           className="text-lg text-gray-600 transition hover:text-black"
         >
           Productos
-          <CartIcon />
         </Link>
 
         {/* Solo mostrar "Ingresar" si NO hay usuario logueado */}
@@ -108,6 +107,7 @@ function Navbar() {
             </button>
           </div>
         )}
+        <CartIcon />
       </nav>
     </div>
   )

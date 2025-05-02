@@ -1,4 +1,10 @@
-export type ProductoType = {
+type Producto = {
+    id: string;
+    nombre: string;
+    precio: number;
+};
+
+export type ProductoType = Producto & {
     objectID: string;
     productId: string,
     Name: string;

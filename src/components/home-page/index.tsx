@@ -73,7 +73,7 @@ export const HomePage: React.FC<Props> = ({ data }) => {
       <div className="py-12 text-center text-white bg-blue-600 rounded-xl">
         <h2 className="mb-4 text-3xl font-bold">¿Listo para comprar?</h2>
         <Link
-          href="/"
+          href="/product"
           className="px-6 py-3 text-lg text-blue-600 transition bg-white rounded-xl hover:bg-gray-100"
         >
           Explorá nuestros productos

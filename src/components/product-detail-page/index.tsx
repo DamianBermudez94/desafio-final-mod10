@@ -1,4 +1,5 @@
 import { getOrderUrl, getSettedToken } from "src/lib/api/api";
+import { convertirProducto } from "../../utils/convertirProducto";
 import { ProductoType } from "src/types"; // Ajustá el path si lo pusiste en otro lado
 import { useRouter } from "next/router";
 import React, { useState } from "react";
@@ -27,6 +28,7 @@ export const ProductDetailPage: React.FC<Props> = ({ producto, notFound }) => {
   const [loading, setLoading] = useState(false);
   const [orderError, setOrderError] = useState(false);
   const { agregarAlCarrito } = useCarrito();
+  const productoConvertido = convertirProducto(producto); // ⬅️ conversión
 
   async function buyProduct() {
     setOrderError(false);
@@ -65,7 +67,7 @@ export const ProductDetailPage: React.FC<Props> = ({ producto, notFound }) => {
               <PrimaryButtonBig disabled={loading} onClick={buyProduct}>
                 {loading ? <Spinner /> : "Comprar"}
               </PrimaryButtonBig>
-              <button onClick={() => agregarAlCarrito(producto)}>
+              <button onClick={() => agregarAlCarrito(productoConvertido)}>
                 Agregar al carrito
               </button>
               {orderError && (

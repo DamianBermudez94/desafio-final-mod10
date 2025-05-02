@@ -4,6 +4,7 @@ import Head from "next/head";
 
 const CarritoPage = () => {
   const { carrito, quitarDelCarrito, vaciarCarrito, total } = useCarrito();
+  console.log(carrito);
 
   return (
     <>
@@ -17,7 +18,7 @@ const CarritoPage = () => {
         {carrito.length === 0 ? (
           <p className="text-center text-gray-600">Tu carrito está vacío 🛒</p>
         ) : (
-          <div className="max-w-3xl mx-auto space-y-6">
+          <div key={carrito} className="max-w-3xl mx-auto space-y-6">
             {carrito.map((item) => (
               <div
                 key={item.id}

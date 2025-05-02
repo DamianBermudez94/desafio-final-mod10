@@ -10,8 +10,10 @@ type Props = {
 export const ProductCard: React.FC<Props> = ({ producto }) => {
   const router = useRouter();
 
-  const imageUrl = producto.Images?.[0]?.filename || producto.Images?.[0]?.url;
+  const imageUrl = producto.Images?.[0]?.url || "/no-image.jpg";
 
+  console.log(imageUrl);
+  console.log(producto.Images?.[0]);
   function handleClick() {
     router.push("/detail/" + producto.objectID); // ✅
   }

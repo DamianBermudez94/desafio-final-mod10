@@ -1,7 +1,7 @@
 import { createContext, useContext, useState, ReactNode } from "react";
 
 type Producto = {
-  id: number;
+  id: string;
   nombre: string;
   precio: number;
   imagen?: string;
@@ -11,7 +11,7 @@ type Producto = {
 type CarritoContextType = {
   carrito: Producto[];
   agregarAlCarrito: (producto: Producto) => void;
-  quitarDelCarrito: (id: number) => void;
+  quitarDelCarrito: (id: string) => void;
   vaciarCarrito: () => void;
   total: number;
 };
@@ -35,7 +35,7 @@ export const CarritoProvider = ({ children }: { children: ReactNode }) => {
     });
   };
 
-  const quitarDelCarrito = (id: number) => {
+  const quitarDelCarrito = (id: string) => {
     setCarrito((prev) =>
       prev
         .map((item) =>
