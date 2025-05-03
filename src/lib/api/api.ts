@@ -14,6 +14,8 @@ export async function fetchApi(input: RequestInfo, options?: Options) {
   }
 
   const url = "https://dwf-m9-desafio-final.vercel.app/api" + input;
+  console.log("soy la url", url);
+
 
   const res = await fetch(url, formattedOptions);
 
@@ -71,23 +73,27 @@ export async function getOrderUrl(id: string) {
       method: "POST",
     });
     // const json = await url.json()
+    console.log(url);
+
     return url;
   } catch (error) {
+    throw error;
+  }
+}
+export async function getProduct(query: string = "", limit: number = 12, offset: number = 0) {
+  try {
+    const res = await fetchApi(`/products?q=${query}&limit=${limit}&offset=${offset}`);
+    console.log(res);
+
+    const data = await res.json();
+    return data; // Devuelve los resultados y la paginación
+  } catch (error) {
+    console.error("Error al obtener productos:", error);
     throw error;
   }
 }
 
-export async function getProduct() {
-  try {
-    const url = await fetchApi("/products", {
-      method: "POST",
-    });
-    // const json = await url.json()
-    return url;
-  } catch (error) {
-    throw error;
-  }
-}
+
 export function setToken(token: string) {
   localStorage.setItem("token", token);
 }
