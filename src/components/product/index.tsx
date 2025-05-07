@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getProduct } from "src/lib/api/api"; // Tu función que obtiene los productos
 import { Layout } from "src/components/layout";
-import { SearchPage } from "src/components/search-page";
+import Image from "next/image";
 import Head from "next/head";
 
 const ProductosPage = () => {
@@ -62,7 +62,7 @@ const ProductosPage = () => {
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
               {productos.map((producto) => (
                 <div key={producto.id} className="p-4 border rounded shadow-sm">
-                  <img
+                  <Image
                     src={producto.Images}
                     alt={producto.Name}
                     className="object-cover w-full h-40 mb-4"

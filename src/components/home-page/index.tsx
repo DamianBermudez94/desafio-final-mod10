@@ -1,6 +1,6 @@
 import React from "react";
 import { FeaturedSection } from "src/components/featured-section";
-
+import Image from "next/image";
 import Link from "next/link";
 
 type Props = {
@@ -13,10 +13,12 @@ export const HomePage: React.FC<Props> = ({ data }) => {
     <section>
       <div className="relative flex items-center justify-center w-full h-[80vh] overflow-hidden text-center bg-gray-100">
         <div className="absolute inset-0 z-0">
-          <img
+          <Image
             src="/images/img-home.webp"
             alt="Mueblería - Home & Deco"
             className="object-cover object-center w-full h-full opacity-70"
+            width={100}
+            height={300}
           />
           <div className="absolute inset-0 bg-black/40" />
         </div>

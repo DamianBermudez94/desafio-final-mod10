@@ -26,10 +26,18 @@ export const Footer: React.FC = () => {
         <div className="flex flex-col justify-between">
           <h4 className="text-2xl font-bold">Nuestras redes</h4>
           <div className="flex justify-center pt-3">
-            <a href="https://damianbermudezdev.es/" target="_blank">
+            <a
+              href="https://damianbermudezdev.es/"
+              target="_blank"
+              rel="noreferrer"
+            >
               <Facebook />
             </a>
-            <a href="https://damianbermudezdev.es/" target="_blank">
+            <a
+              href="https://damianbermudezdev.es/"
+              target="_blank"
+              rel="noreferrer"
+            >
               <Instagram />
             </a>
           </div>

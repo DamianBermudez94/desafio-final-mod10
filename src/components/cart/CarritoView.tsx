@@ -1,6 +1,7 @@
 // src/pages/carrito.tsx
 import { useCarrito } from "src/context/CarrtitoContext";
 import Head from "next/head";
+import Image from "next/image";
 
 const CarritoPage = () => {
   const { carrito, quitarDelCarrito, vaciarCarrito, total } = useCarrito();
@@ -18,7 +19,7 @@ const CarritoPage = () => {
         {carrito.length === 0 ? (
           <p className="text-center text-gray-600">Tu carrito está vacío 🛒</p>
         ) : (
-          <div key={carrito} className="max-w-3xl mx-auto space-y-6">
+          <div className="max-w-3xl mx-auto space-y-6">
             {carrito.map((item) => (
               <div
                 key={item.id}
@@ -26,7 +27,7 @@ const CarritoPage = () => {
               >
                 <div className="flex items-center gap-4">
                   {item.imagen && (
-                    <img
+                    <Image
                       src={item.imagen}
                       alt={item.nombre}
                       className="object-cover w-20 h-20 rounded"

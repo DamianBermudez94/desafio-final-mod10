@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import React from "react";
 import { ProductoType } from "src/types";
 import { LargeText, SubTitle } from "./../../ui/text";
+import Image from "next/image";
 
 type Props = {
   producto: ProductoType;
@@ -27,7 +28,7 @@ export const ProductCard: React.FC<Props> = ({ producto }) => {
     >
       {/* 📸 Caja para la imagen */}
       <div className="relative w-full h-[200px] overflow-hidden">
-        <img
+        <Image
           src={imageUrl}
           alt={producto.Name || "Producto"}
           width={322}

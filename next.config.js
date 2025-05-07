@@ -1,7 +1,7 @@
 const withSvgr = require("next-svgr");
 
 /** @type {import('next').NextConfig} */
-const baseConfig = {
+const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   compiler: {
@@ -9,8 +9,17 @@ const baseConfig = {
   },
   experimental: {
     appDir: true,
-  }
+  },
+  images: {
+    domains: [
+      'dl.airtable.com', // anterior
+      'v5.airtableusercontent.com', // nuevo dominio
+    ],
+  },
 };
 
-module.exports = withSvgr(baseConfig);
+module.exports = withSvgr(nextConfig);
+
+
+
 
