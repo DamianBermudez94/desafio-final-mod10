@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getProduct } from "src/lib/api/api"; // Tu función que obtiene los productos
 import { Layout } from "src/components/layout";
+import { SearchPage } from "src/components/search-page";
 import Head from "next/head";
 
 const ProductosPage = () => {
@@ -43,10 +44,11 @@ const ProductosPage = () => {
           <h1 className="mb-6 text-3xl font-bold">Nuestros Productos</h1>
 
           {/* Barra de búsqueda */}
+          {/* Input que controla el estado de búsqueda */}
           <div className="mb-4">
             <input
               type="text"
-              placeholder="Buscar productos"
+              placeholder="Buscar productos... mesa, silla, alfombras, lamparas"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full p-2 border rounded"
@@ -61,12 +63,21 @@ const ProductosPage = () => {
               {productos.map((producto) => (
                 <div key={producto.id} className="p-4 border rounded shadow-sm">
                   <img
-                    src={producto.imagen}
-                    alt={producto.nombre}
+                    src={producto.Images}
+                    alt={producto.Name}
                     className="object-cover w-full h-40 mb-4"
                   />
-                  <h3 className="text-xl font-semibold">{producto.nombre}</h3>
-                  <p className="text-lg">{producto.precio}$</p>
+                  <h3 className="text-xl font-semibold">{producto.Name}</h3>
+                  <p className="text-lg">{producto.Unit_cost}$</p>
+                  <span
+                    className={`inline-block px-2 py-1 text-sm rounded ${
+                      producto.In_stock
+                        ? "bg-green-200 text-green-800"
+                        : "bg-red-200 text-red-800"
+                    }`}
+                  >
+                    {producto.In_stock ? "En stock" : "Sin stock"}
+                  </span>
                 </div>
               ))}
             </div>
@@ -79,7 +90,7 @@ const ProductosPage = () => {
                 cargarProductos(pagination.offset - pagination.limit)
               }
               disabled={pagination.offset <= 0}
-              className="p-2 bg-gray-200 rounded"
+              className="p-2 bg-red-200 rounded cursor-pointer"
             >
               Anterior
             </button>
@@ -90,7 +101,7 @@ const ProductosPage = () => {
               disabled={
                 pagination.offset + pagination.limit >= pagination.total
               }
-              className="p-2 bg-gray-200 rounded"
+              className="p-2 bg-red-200 rounded cursor-pointer"
             >
               Siguiente
             </button>

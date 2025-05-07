@@ -80,12 +80,14 @@ export async function getOrderUrl(id: string) {
     throw error;
   }
 }
-export async function getProduct(query: string = "", limit: number = 12, offset: number = 0) {
+export async function getProduct(query: string = "", limit: number = 5, offset: number = 0) {
   try {
-    const res = await fetchApi(`/products?q=${query}&limit=${limit}&offset=${offset}`);
-    console.log(res);
+    const data = await fetchApi(`/products?q=${query}&limit=${limit}&offset=${offset}`);
+    console.log(data);
+    return data
 
-    const data = await res.json();
+
+
     return data; // Devuelve los resultados y la paginación
   } catch (error) {
     console.error("Error al obtener productos:", error);
