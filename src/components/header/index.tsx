@@ -1,8 +1,4 @@
-import { SearchForm } from "src/components/search-form";
 import { SideBar } from "src/components/side-bar";
-import { ShoppingCart } from "lucide-react";
-import Link from "next/link";
-import { useRouter } from "next/router";
 import React, { useState } from "react";
 
 type Props = {
@@ -12,11 +8,6 @@ type Props = {
 
 export const Header: React.FC<Props> = (props) => {
   const [flag, setFlag] = useState(false);
-  const router = useRouter();
-  function handleSubmit(data: any) {
-    if (data.query) router.push("/search/" + data.query);
-  }
-
   function toggleMenu() {
     setFlag(!flag);
   }

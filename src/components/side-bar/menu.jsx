@@ -2,19 +2,14 @@ import React, { useState } from 'react'
 import Link from "next/link";
 import { useRecoilState } from "recoil";
 
-
 import { useCheckToken } from "src/hooks/hooks";
 import { userMailState } from "src/recoil/atoms";
 import { removeToken } from "src/lib/api/api";
 import { useRouter } from "next/router";
 
-
-
 import { CartIcon } from "src/components/cartIcon/cartIcon";
-import { ShoppingCart, User } from 'lucide-react';
+import { User } from 'lucide-react';
 import BurguerButton from './burgerButton'
-
-
 
 function Navbar() {
   const [userMail, setUserMail] = useRecoilState(userMailState);
@@ -24,12 +19,10 @@ function Navbar() {
   const [clicked, setClicked] = useState(false)
   const handleClick = () => setClicked(!clicked)
 
-  function handleRedirectToLogin() {
-    router.push("/login");
-  }
   function handleLogOut() {
     setUserMail("");
     removeToken();
+    router.push("/login");
   }
 
   return (

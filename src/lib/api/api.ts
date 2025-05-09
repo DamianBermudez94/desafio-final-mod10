@@ -2,6 +2,7 @@ interface Options extends RequestInit {
   headers?: (Headers & { Authorization: string }) | {};
   body?: string;
 }
+import { useRouter } from "next/router";
 
 export async function fetchApi(input: RequestInfo, options?: Options) {
   const token = await getSettedToken();
@@ -83,11 +84,6 @@ export async function getOrderUrl(id: string) {
 export async function getProduct(query: string = "", limit: number = 5, offset: number = 0) {
   try {
     const data = await fetchApi(`/products?q=${query}&limit=${limit}&offset=${offset}`);
-    console.log(data);
-    return data
-
-
-
     return data; // Devuelve los resultados y la paginación
   } catch (error) {
     console.error("Error al obtener productos:", error);
@@ -106,7 +102,20 @@ export async function getSettedToken() {
   return false;
 }
 export function removeToken() {
-  localStorage.removeItem("token");
+  const router = useRouter();
+
+  if (typeof window !== "undefined" && localStorage) {
+    localStorage.removeItem("token");
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      console.log("Token eliminado correctamente.");
+      // Redirigir a la página de login
+      router.push("/login");
+    } else {
+      console.error("Hubo un error al eliminar el token.");
+    }
+  }
 }
 type UserData = {
   name: string;
