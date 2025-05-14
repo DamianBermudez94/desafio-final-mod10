@@ -2,6 +2,7 @@ import React from "react";
 import { FeaturedSection } from "src/components/featured-section";
 import Image from "next/image";
 import Link from "next/link";
+import Beneficios from "src/components/Beneficios/Beneficios";
 
 type Props = {
   children?: React.ReactNode;
@@ -17,8 +18,7 @@ export const HomePage: React.FC<Props> = ({ data }) => {
             src="/images/img-home.webp"
             alt="Mueblería - Home & Deco"
             className="object-cover object-center w-full h-full opacity-70"
-            width={100}
-            height={300}
+            fill
           />
           <div className="absolute inset-0 bg-black/40" />
         </div>
@@ -40,19 +40,8 @@ export const HomePage: React.FC<Props> = ({ data }) => {
         </div>
       </div>
       {/* Beneficios */}
-      <div className="grid grid-cols-1 gap-6 text-center md:grid-cols-3">
-        <div>
-          <div className="mb-2 text-4xl">🚚</div>
-          <h3 className="text-lg font-semibold">Envíos a todo el país</h3>
-        </div>
-        <div>
-          <div className="mb-2 text-4xl">🔄</div>
-          <h3 className="text-lg font-semibold">Cambios sin drama</h3>
-        </div>
-        <div>
-          <div className="mb-2 text-4xl">🛠️</div>
-          <h3 className="text-lg font-semibold">Materiales de calidad</h3>
-        </div>
+      <div className="w-full h-full">
+        <Beneficios />
       </div>
 
       {/* Contenido por encima */}
