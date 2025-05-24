@@ -15,7 +15,7 @@ export async function fetchApi(input: RequestInfo, options?: Options) {
   }
 
   const url = "https://dwf-m9-desafio-final.vercel.app/api" + input;
-
+ 
 
 
   const res = await fetch(url, formattedOptions);
