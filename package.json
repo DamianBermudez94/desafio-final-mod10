@@ -16,7 +16,7 @@
     "@types/styled-components": "^5.1.26",
     "eslint": "8.28.0",
     "eslint-config-next": "13.0.5",
-    "framer-motion": "^12.11.0",
+    "framer-motion": "^12.14.0",
     "lucide-react": "^0.503.0",
     "next": "13.0.5",
     "next-svgr": "^0.0.2",

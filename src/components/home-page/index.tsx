@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import Link from "next/link";
 
 import { FeaturedSection } from "src/components/featured-section";
@@ -16,12 +15,12 @@ export const HomePage: React.FC<Props> = ({ data }) => {
     <section>
       {/* Hero */}
       <ParallaxSection
-        image="/images/img-home.webp"
-        objectPosition="center 100%"
+        image="/images/efecto-parallax.webp"
+        objectPosition="bottom"
         overlayColor="black"
         overlayOpacity={0.5}
         strength={400}
-        height="100vh"
+        height="80vh"
       >
         <div className="inset-0 max-w-2xl">
           <h1 className="mb-4 text-5xl font-bold drop-shadow-lg">
@@ -59,7 +58,7 @@ export const HomePage: React.FC<Props> = ({ data }) => {
       </div>
       {/* CTA Final */}
       <ParallaxSection
-        image="/images/imagen-parallax.webp"
+        image="/images/efecto-home-parallax-2.webp"
         objectPosition="center"
         overlayColor="black"
         overlayOpacity={0.5}

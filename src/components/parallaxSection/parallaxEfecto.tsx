@@ -1,41 +1,57 @@
-// src/components/ParallaxSection.tsx
-
-import React from "react";
 import { Parallax } from "react-parallax";
+import { motion } from "framer-motion";
+import React from "react";
 
 type Props = {
+  children: React.ReactNode;
   image: string;
-  objectPosition?: string;
   overlayColor?: string;
   overlayOpacity?: number;
-  height?: string;
   strength?: number;
-  children: React.ReactNode;
+  height?: string;
+  objectPosition?: "top" | "center" | "bottom";
 };
 
-const ParallaxSection: React.FC<Props> = ({
-  image,
-  objectPosition = "center",
-  overlayColor = "black",
-  overlayOpacity = 0.4,
-  height = "70vh",
-  strength = 300,
+const ParallaxSection = ({
   children,
-}) => {
+  image,
+  overlayColor = "black",
+  overlayOpacity = 0.5,
+  strength = 200,
+  height = "80vh",
+  objectPosition = "center",
+}: Props) => {
   return (
     <Parallax
       bgImage={image}
       strength={strength}
       bgImageStyle={{
-        objectFit: "cover",
-        objectPosition: objectPosition, // 👈 usamos la prop
+        width: "100%",
+        height: "100%",
+      }}
+      style={{
+        backgroundPosition: objectPosition,
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
       }}
     >
       <div
+        className="relative flex items-center justify-center w-full px-6 text-center text-white"
         style={{ height }}
-        className="flex items-center justify-center px-4 text-center"
       >
-        <div className="z-10 text-white">{children}</div>
+        <div
+          className="absolute inset-0"
+          style={{ backgroundColor: overlayColor, opacity: overlayOpacity }}
+        />
+        <motion.div
+          className="relative z-10 max-w-2xl"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true }}
+        >
+          {children}
+        </motion.div>
       </div>
     </Parallax>
   );
