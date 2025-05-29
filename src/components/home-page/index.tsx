@@ -18,7 +18,7 @@ export const HomePage: React.FC<Props> = ({ data }) => {
         image="/images/efecto-parallax.webp"
         objectPosition="bottom"
         overlayColor="black"
-        overlayOpacity={0.5}
+        overlayOpacity={0.6}
         strength={400}
         height="80vh"
       >
@@ -61,7 +61,7 @@ export const HomePage: React.FC<Props> = ({ data }) => {
         image="/images/efecto-home-parallax-2.webp"
         objectPosition="center"
         overlayColor="black"
-        overlayOpacity={0.5}
+        overlayOpacity={0.6}
         strength={400}
         height="80vh"
       >

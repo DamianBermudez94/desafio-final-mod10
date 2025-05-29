@@ -16,7 +16,7 @@ const ParallaxSection = ({
   children,
   image,
   overlayColor = "black",
-  overlayOpacity = 0.5,
+  overlayOpacity = 0.6,
   strength = 200,
   height = "80vh",
   objectPosition = "center",

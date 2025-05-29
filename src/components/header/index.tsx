@@ -17,7 +17,7 @@ export const Header: React.FC<Props> = (props) => {
     >
       <header
         className={
-          "w-full h-auto z-20 p-10 px-11 flex flex-wrap justify-center items-center  m-auto bg-white"
+          "w-full h-auto z-20 px-11 flex flex-wrap justify-center items-center m-auto bg-white shadow-md"
         }
       >
         <SideBar toggle={toggleMenu} show={flag} />
