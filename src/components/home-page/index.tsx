@@ -1,5 +1,9 @@
 import React from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 import { FeaturedSection } from "src/components/featured-section";
 import Beneficios from "src/components/Beneficios/Beneficios";
@@ -8,6 +12,16 @@ import ParallaxSection from "src/components/parallaxSection/parallaxEfecto";
 type Props = {
   children?: React.ReactNode;
   data: any;
+};
+
+const settings = {
+  dots: true,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  arrows: true,
+  autoplay: false,
 };
 
 export const HomePage: React.FC<Props> = ({ data }) => {
@@ -43,15 +57,61 @@ export const HomePage: React.FC<Props> = ({ data }) => {
       </div>
 
       {/* Historia / Propósito */}
-      <div className="max-w-3xl mx-auto text-center text-gray-700">
-        <h2 className="mb-4 text-2xl font-bold">Nuestra historia</h2>
-        <p>
-          Empezamos con una idea simple: crear un ecommerce que no venda solo
-          productos, sino experiencias. Cada artículo está pensado para durar y
-          acompañarte todos los días. Apostamos a la calidad y al diseño
-          funcional.
-        </p>
-      </div>
+      <section className="grid items-center max-w-6xl gap-12 px-6 py-20 mx-auto bg-white md:px-20 md:grid-cols-2">
+        <div className="">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="mb-6 text-4xl font-bold">Nuestra Historia</h2>
+            <p className="text-lg leading-relaxed text-gray-700">
+              Creemos que cada hogar tiene su propia historia, y nosotros
+              estamos para ayudarte a contarla. Empezamos con una idea simple:
+              ofrecer productos que no solo decoren, sino que transformen
+              espacios.
+            </p>
+            <p className="mt-4 text-lg text-gray-700">
+              Desde alfombras acogedoras hasta lámparas que iluminan momentos,
+              seleccionamos cuidadosamente cada pieza para acompañarte en tu día
+              a día con estilo, funcionalidad y calidez.
+            </p>
+          </motion.div>
+          <div className="hidden md:block md:w-1/2">
+            <Slider {...settings}>
+              <div className="overflow-hidden shadow-lg aspect-w-4 aspect-h-3 rounded-xl">
+                <img
+                  src="/images/lampara.webp"
+                  alt="Producto 1"
+                  className="object-cover w-full h-[200px] shadow-lg rounded-xl"
+                />
+              </div>
+              <div className="overflow-hidden shadow-lg aspect-w-4 aspect-h-3 rounded-xl">
+                <img
+                  src="/images/alfombra.webp"
+                  alt="Producto 1"
+                  className="object-cover w-full h-[200px] shadow-lg rounded-xl"
+                />
+              </div>{" "}
+              <div className="overflow-hidden shadow-lg aspect-w-4 aspect-h-3 rounded-xl">
+                <img
+                  src="/images/biblioteca.webp"
+                  alt="Producto 1"
+                  className="object-cover w-full h-[200px] shadow-lg rounded-xl"
+                />
+              </div>{" "}
+              <div className="overflow-hidden shadow-lg aspect-w-4 aspect-h-3 rounded-xl">
+                <img
+                  src="/images/mesa-ratona.webp"
+                  alt="Producto 1"
+                  className="object-cover w-full h-[200px] shadow-lg rounded-xl"
+                />
+              </div>
+            </Slider>
+          </div>
+        </div>
+      </section>
       {/* Beneficios */}
       <div className="w-full h-full">
         <Beneficios />
