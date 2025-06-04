@@ -11,6 +11,7 @@ import {
   ProductsCardWrapper,
   SearchWrapper,
 } from "./styled";
+import { ProductoType } from "src/types";
 
 type Props = {
   children?: React.ReactNode;
@@ -74,16 +75,8 @@ export const SearchPage: React.FC<Props> = ({ children, query }) => {
         <ProductsCardWrapper>
           {results ? (
             results.length > 0 ? (
-              results.map((item: any) => {
-                return (
-                  <ProductCard
-                    key={item.objectID}
-                    productId={item.objectID}
-                    url={item.Images[0]?.url}
-                    title={item.Name}
-                    price={item.Unit_cost}
-                  />
-                );
+              results.map((item: ProductoType) => {
+                return <ProductCard key={item.objectID} producto={item} />;
               })
             ) : (
               <ProductNotFoundWrapper>

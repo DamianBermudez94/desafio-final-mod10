@@ -1,4 +1,5 @@
 import React from "react";
+import { UseFormRegister } from "react-hook-form";
 import { BaseInput, Label } from "./styled";
 
 type Props = {
@@ -8,6 +9,7 @@ type Props = {
   default?: string;
   required?: boolean;
   value?: string;
+  register?: UseFormRegister<any>;
 
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
@@ -19,7 +21,7 @@ const Input: React.FC<Props> = ({
   required,
   value,
   onChange,
-  register
+  register,
 }) => {
   const inputProps = register ? register(name, { required }) : {};
   return (
@@ -32,7 +34,6 @@ const Input: React.FC<Props> = ({
         onChange={onChange}
         required={required}
         {...inputProps}
-
       />
     </Label>
   );
