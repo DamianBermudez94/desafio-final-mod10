@@ -1,24 +1,19 @@
 import Link from "next/link";
-import { PrimaryButton } from "ui/buttons";
-import { LargeText, Title } from "ui/text";
-import { ButtonContainer, Root, TextContainer } from "./styled";
 
 const SuccessPage: React.FC = () => {
   return (
-    <Root>
-      <Title>El pago ha sido exitoso!</Title>
-      <TextContainer>
-        <LargeText>
-          En breve nos comunicaremos por mail para coordinar el envio.
-        </LargeText>
-        <LargeText>Muchas gracias por tu compra.</LargeText>
-        <ButtonContainer>
+    <article>
+      <h1>El pago ha sido exitoso!</h1>
+      <div>
+        <p>En breve nos comunicaremos por mail para coordinar el envio.</p>
+        <span>Muchas gracias por tu compra.</span>
+        <div>
           <Link href="/">
-            <PrimaryButton>Seguir comprando</PrimaryButton>
+            <button>Seguir comprando</button>
           </Link>
-        </ButtonContainer>
-      </TextContainer>
-    </Root>
+        </div>
+      </div>
+    </article>
   );
 };
 

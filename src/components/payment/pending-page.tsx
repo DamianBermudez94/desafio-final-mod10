@@ -1,26 +1,23 @@
 import Link from "next/link";
 import React from "react";
-import { PrimaryButton } from "ui/buttons";
-import { LargeText, Title } from "ui/text";
-import { ButtonContainer, Root, TextContainer } from "./styled";
 
 const PendingPage: React.FC = () => {
   return (
-    <Root>
-      <Title>El pago esta pendiente</Title>
-      <TextContainer>
-        <LargeText>
+    <article>
+      <h1>pago esta pendiente</h1>
+      <div>
+        <p>
           En cuanto recibamos la confirmacion de pago, nos comunicaremos por
           mail para coordinar el envío.
-        </LargeText>
-        <LargeText>Muchas gracias por tu compra.</LargeText>
-        <ButtonContainer>
+        </p>
+        <span> gacias por tu compra.</span>
+        <div>
           <Link href="/">
-            <PrimaryButton>Seguir comprando</PrimaryButton>
+            <button>Seguir comprando</button>
           </Link>
-        </ButtonContainer>
-      </TextContainer>
-    </Root>
+        </div>
+      </div>
+    </article>
   );
 };
 
