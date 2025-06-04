@@ -43,12 +43,12 @@ export const HomePage: React.FC<Props> = ({ data }) => {
           <p className="mb-6 text-xl drop-shadow">
             Productos que combinan diseño, calidad y funcionalidad.
           </p>
-          <a
+          <link
             href="/product"
             className="inline-block px-6 py-3 text-lg font-medium text-white transition bg-blue-600 rounded-xl hover:bg-blue-700"
           >
             Ver colección
-          </a>
+          </link>
         </div>
       </ParallaxSection>
       {/* Contenido por encima */}
