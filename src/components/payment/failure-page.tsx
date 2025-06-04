@@ -1,23 +1,20 @@
 import Link from "next/link";
 import React from "react";
-import { PrimaryButton } from "ui/buttons";
-import { LargeText, Title } from "ui/text";
-import { ButtonContainer, Root, TextContainer } from "./styled";
 
 const FailurePage: React.FC = () => {
   return (
-    <Root>
-      <Title>El pago falló</Title>
-      <TextContainer>
-        <LargeText>No pudimos recibir el pago.</LargeText>
-        <LargeText>Por favor vuelve a intentarlo.</LargeText>
-        <ButtonContainer>
+    <article>
+      <h1>El pago falló</h1>
+      <div>
+        <p>No pudimos recibir el pago.</p>
+        <p>Por favor vuelve a intentarlo.</p>
+        <div>
           <Link href="/">
-            <PrimaryButton>Ir al inicio</PrimaryButton>
+            <button>Ir al inicio</button>
           </Link>
-        </ButtonContainer>
-      </TextContainer>
-    </Root>
+        </div>
+      </div>
+    </article>
   );
 };
 
