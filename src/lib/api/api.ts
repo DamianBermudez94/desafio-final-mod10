@@ -15,7 +15,7 @@ export async function fetchApi(input: RequestInfo, options?: Options) {
   }
 
   const url = "https://dwf-m9-desafio-final.vercel.app/api" + input;
- 
+
 
 
   const res = await fetch(url, formattedOptions);
@@ -32,7 +32,7 @@ type AuthProps = {
   email: string;
 };
 
-export async function getAuth(body: AuthProps) {
+export async function getAuth(body: AuthProps): Promise<AuthResponse> {
   try {
     const res = await fetchApi("/auth", {
       method: "POST",
@@ -42,17 +42,27 @@ export async function getAuth(body: AuthProps) {
       body: JSON.stringify(body),
     });
 
-    return res;
+    return res; // asumimos que res es del tipo AuthResponse
   } catch (error: any) {
-    return error;
+    return { error: error.message || "Error desconocido" };
   }
 }
+
+type AuthResponse = {
+  error?: string;
+};
+
+type TokenResponse = {
+  token?: string;
+  error?: string;
+};
 
 type TokenProps = {
   email: string;
   code: number;
 };
-export async function getToken(body: TokenProps) {
+
+export async function getToken(body: TokenProps): Promise<TokenResponse> {
   try {
     const res = await fetchApi("/auth/token", {
       method: "POST",
@@ -63,11 +73,13 @@ export async function getToken(body: TokenProps) {
     });
 
     setToken(res.token);
-    return { token: true };
-  } catch (error) {
-    return error;
+    return { token: res.token }; // importante devolver el valor real
+  } catch (error: any) {
+    return { error: error.message || "Error desconocido" };
   }
 }
+
+
 export async function getOrderUrl(id: string) {
   try {
     const url = await fetchApi("/order?productId=" + id, {
@@ -101,22 +113,22 @@ export async function getSettedToken() {
   }
   return false;
 }
-export function removeToken() {
-  const router = useRouter();
 
+export function removeToken(router: ReturnType<typeof useRouter>) {
   if (typeof window !== "undefined" && localStorage) {
     localStorage.removeItem("token");
-    const token = localStorage.getItem("token");
 
+    const token = localStorage.getItem("token");
     if (!token) {
       console.log("Token eliminado correctamente.");
-      // Redirigir a la página de login
       router.push("/login");
     } else {
       console.error("Hubo un error al eliminar el token.");
     }
   }
 }
+
+
 type UserData = {
   name: string;
   address: string;
