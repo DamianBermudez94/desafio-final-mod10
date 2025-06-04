@@ -7,8 +7,8 @@ export function convertirProducto(p: ProductoType): Producto {
     id: p.productId,
     nombre: p.Name,
     precio: p.Unit_cost,
-    descripcion: p.Description,
-    imagenPrincipal: p.Images[0]?.url || "",
+    Description: p.Description,
+    imagen: p.Images[0]?.url || "",
     tipo: p.Type,
     color: p.Color,
     enStock:

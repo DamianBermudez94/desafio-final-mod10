@@ -1,7 +1,12 @@
-type Producto = {
+export type Producto = {
     id: string;
     nombre: string;
     precio: number;
+    Description: string
+    imagen: string,
+    tipo: string;
+    color: string;
+    enStock: boolean
 };
 
 export type ProductoType = Producto & {
