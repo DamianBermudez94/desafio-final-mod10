@@ -43,12 +43,12 @@ export const HomePage: React.FC<Props> = ({ data }) => {
           <p className="mb-6 text-xl drop-shadow">
             Productos que combinan diseño, calidad y funcionalidad.
           </p>
-          <link
+          <Link
             href="/product"
             className="inline-block px-6 py-3 text-lg font-medium text-white transition bg-blue-600 rounded-xl hover:bg-blue-700"
           >
             Ver colección
-          </link>
+          </Link>
         </div>
       </ParallaxSection>
       {/* Contenido por encima */}
@@ -57,59 +57,56 @@ export const HomePage: React.FC<Props> = ({ data }) => {
       </div>
 
       {/* Historia / Propósito */}
-      <section className="grid items-center max-w-6xl gap-12 px-6 py-20 mx-auto bg-white md:px-20 md:grid-cols-2">
-        <div className="">
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="mb-6 text-4xl font-bold">Nuestra Historia</h2>
-            <p className="text-lg leading-relaxed text-gray-700">
-              Creemos que cada hogar tiene su propia historia, y nosotros
-              estamos para ayudarte a contarla. Empezamos con una idea simple:
-              ofrecer productos que no solo decoren, sino que transformen
-              espacios.
-            </p>
-            <p className="mt-4 text-lg text-gray-700">
-              Desde alfombras acogedoras hasta lámparas que iluminan momentos,
-              seleccionamos cuidadosamente cada pieza para acompañarte en tu día
-              a día con estilo, funcionalidad y calidez.
-            </p>
-          </motion.div>
-          <div className="hidden md:block md:w-1/2">
-            <Slider {...settings}>
-              <div className="overflow-hidden shadow-lg aspect-w-4 aspect-h-3 rounded-xl">
-                <img
-                  src="/images/lampara.webp"
-                  alt="Producto 1"
-                  className="object-cover w-full h-[200px] shadow-lg rounded-xl"
-                />
-              </div>
-              <div className="overflow-hidden shadow-lg aspect-w-4 aspect-h-3 rounded-xl">
-                <img
-                  src="/images/alfombra.webp"
-                  alt="Producto 1"
-                  className="object-cover w-full h-[200px] shadow-lg rounded-xl"
-                />
-              </div>{" "}
-              <div className="overflow-hidden shadow-lg aspect-w-4 aspect-h-3 rounded-xl">
-                <img
-                  src="/images/biblioteca.webp"
-                  alt="Producto 1"
-                  className="object-cover w-full h-[200px] shadow-lg rounded-xl"
-                />
-              </div>{" "}
-              <div className="overflow-hidden shadow-lg aspect-w-4 aspect-h-3 rounded-xl">
-                <img
-                  src="/images/mesa-ratona.webp"
-                  alt="Producto 1"
-                  className="object-cover w-full h-[200px] shadow-lg rounded-xl"
-                />
-              </div>
-            </Slider>
-          </div>
+      <section className="grid items-center max-w-6xl grid-cols-1 gap-12 px-6 py-20 mx-auto overflow-hidden bg-white md:px-20 md:grid-cols-2">
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="mb-6 text-4xl font-bold">Nuestra Historia</h2>
+          <p className="text-lg leading-relaxed text-gray-700">
+            Creemos que cada hogar tiene su propia historia, y nosotros estamos
+            para ayudarte a contarla. Empezamos con una idea simple: ofrecer
+            productos que no solo decoren, sino que transformen espacios.
+          </p>
+          <p className="mt-4 text-lg text-gray-700">
+            Desde alfombras acogedoras hasta lámparas que iluminan momentos,
+            seleccionamos cuidadosamente cada pieza para acompañarte en tu día a
+            día con estilo, funcionalidad y calidez.
+          </p>
+        </motion.div>
+        <div className="block w-full">
+          <Slider {...settings}>
+            <div className="overflow-hidden shadow-lg aspect-w-4 aspect-h-3 rounded-xl">
+              <img
+                src="/images/lampara.webp"
+                alt="Producto 1"
+                className="object-cover w-full h-[300px] shadow-lg rounded-xl"
+              />
+            </div>
+            <div className="overflow-hidden shadow-lg aspect-w-4 aspect-h-3 rounded-xl">
+              <img
+                src="/images/alfombra.webp"
+                alt="Producto 1"
+                className="object-cover w-full h-[300px] max-w-full shadow-lg rounded-xl"
+              />
+            </div>{" "}
+            <div className="overflow-hidden shadow-lg aspect-w-4 aspect-h-3 rounded-xl">
+              <img
+                src="/images/biblioteca.webp"
+                alt="Producto 1"
+                className="object-cover w-full h-[300px] max-w-full shadow-lg rounded-xl"
+              />
+            </div>{" "}
+            <div className="overflow-hidden shadow-lg aspect-w-4 aspect-h-3 rounded-xl">
+              <img
+                src="/images/mesa-ratona.webp"
+                alt="Producto 1"
+                className="object-cover w-full h-[300px] max-w-full shadow-lg rounded-xl"
+              />
+            </div>
+          </Slider>
         </div>
       </section>
       {/* Beneficios */}
