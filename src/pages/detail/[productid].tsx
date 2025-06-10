@@ -37,11 +37,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
     );
 
     const ids: string[] = await res.json();
+    console.log("Soy los ids", ids);
 
-    const paths = ids.map((id) => ({
-      params: { productid: id },
-    }));
-
+    const paths = ids
+      .filter((id): id is string => typeof id === "string" && id.trim() !== "")
+      .map((id) => ({
+        params: { productid: id },
+      }));
     return {
       paths,
       fallback: true, // permite renderizar productos que no estaban al momento del build
@@ -55,31 +57,30 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 };
 
-export const getStaticProps: GetStaticProps = async (
-  context: GetStaticPropsContext
-) => {
+export const getStaticProps: GetStaticProps = async (context) => {
   const id = context.params?.productid;
 
+  console.log("🧩 ID recibido:", id);
+
   if (!id || typeof id !== "string") {
-    console.warn("⚠️ No se encontró el ID del producto.");
     return { notFound: true };
   }
 
   try {
-    const data: ProductoType = await fetchApi("/products/" + id);
+    const producto: ProductoType | null = await fetchApi("/products/" + id);
 
-    if (!data) {
+    if (!producto || typeof producto !== "object") {
       return { notFound: true };
     }
 
     return {
-      props: { producto: data },
+      props: { producto },
       revalidate: 3600,
     };
   } catch (error) {
     console.error("❌ Error al obtener el producto:", error);
     return {
-      props: { error: true },
+      notFound: true, // mejor que pasar error: true
     };
   }
 };
