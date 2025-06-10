@@ -67,7 +67,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   }
 
   try {
-    const producto: ProductoType | null = await fetchApi("/products/" + id);
+    const producto: ProductoType | null = await fetchApi("/product/" + id);
 
     if (!producto || typeof producto !== "object") {
       return { notFound: true };
