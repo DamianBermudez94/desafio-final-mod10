@@ -6,7 +6,6 @@ import { Title } from "src/ui/text";
 import { getAuth, getToken } from "src/lib/api/api";
 import { userMailState } from "src/recoil/atoms";
 import { useRecoilState } from "recoil";
-import { LoginLoadersWrapper, LoginPageWrapper } from "./styled";
 
 export const LoginPage: React.FC = () => {
   const router = useRouter();
@@ -42,7 +41,7 @@ export const LoginPage: React.FC = () => {
   };
 
   return (
-    <LoginPageWrapper>
+    <section className="flex justify-between w-full h-full p-10">
       <Title>{showCodePage ? "Código" : "Ingresar"}</Title>
       <LoginForm
         type={showCodePage ? "code" : "mail"}
@@ -52,10 +51,10 @@ export const LoginPage: React.FC = () => {
         setCode={setCode}
         submit={handleSubmit}
       />
-      <LoginLoadersWrapper>
+      <div>
         {loading && <Spinner />}
         {error && <span>Algo salió mal</span>}
-      </LoginLoadersWrapper>
-    </LoginPageWrapper>
+      </div>
+    </section>
   );
 };
