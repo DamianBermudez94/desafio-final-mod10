@@ -1,10 +1,14 @@
-import { useEffect, useState } from "react";
-import { getProduct } from "src/lib/api/api"; // Tu función que obtiene los productos
-import { Layout } from "src/components/layout";
 import Image from "next/image";
 import Head from "next/head";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+
+import { getProduct } from "src/lib/api/api";
+import { Layout } from "src/components/layout";
+import { ProductCard } from "src/components/product-card";
 
 const ProductosPage = () => {
+  const router = useRouter();
   const [productos, setProductos] = useState<any[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [filtroCategoria, setFiltroCategoria] = useState<string | null>(null);
@@ -61,23 +65,8 @@ const ProductosPage = () => {
           ) : (
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
               {productos.map((producto) => (
-                <div key={producto.id} className="p-4 border rounded shadow-sm">
-                  <Image
-                    src={producto.Images}
-                    alt={producto.Name}
-                    className="object-cover w-full h-40 mb-4"
-                  />
-                  <h3 className="text-xl font-semibold">{producto.Name}</h3>
-                  <p className="text-lg">{producto.Unit_cost}$</p>
-                  <span
-                    className={`inline-block px-2 py-1 text-sm rounded ${
-                      producto.In_stock
-                        ? "bg-green-200 text-green-800"
-                        : "bg-red-200 text-red-800"
-                    }`}
-                  >
-                    {producto.In_stock ? "En stock" : "Sin stock"}
-                  </span>
+                <div key={producto.id} className="p-4">
+                  <ProductCard key={producto.id} producto={producto} />
                 </div>
               ))}
             </div>

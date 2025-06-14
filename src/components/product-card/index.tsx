@@ -1,7 +1,6 @@
 import { useRouter } from "next/router";
 import React from "react";
 import { ProductoType } from "src/types";
-import { LargeText, SubTitle } from "./../../ui/text";
 import Image from "next/image";
 
 type Props = {
@@ -13,37 +12,43 @@ export const ProductCard: React.FC<Props> = ({ producto }) => {
 
   const imageUrl = producto.Images?.[0]?.url || "/no-image.jpg";
 
-  console.log(imageUrl);
-  console.log(producto.Images?.[0]);
   function handleClick() {
     router.push("/detail/" + producto.objectID); // ✅
   }
 
   return (
     <div
-      className="cursor-pointer max-w-[322px] flex flex-col rounded-[6px] border border-[rgba(0,0,0,0.5)] 
-        shadow-[0_5px_15px_rgba(0,0,0,0.35)] hover:shadow-[0_5px_15px_rgba(0,0,0,0.8)]
-        active:shadow-[0_5px_15px_#f09d51] transition-shadow duration-300 ease-in-out overflow-hidden bg-card-bg"
+      className="overflow-hidden transition-shadow duration-300 bg-white shadow-md rounded-2xl hover:shadow-xl"
       onClick={handleClick}
     >
       {/* 📸 Caja para la imagen */}
-      <div className="relative w-full h-[200px] overflow-hidden">
+      <div className="relative w-full h-48">
         <Image
           src={imageUrl}
           alt={producto.Name || "Producto"}
           width={322}
           height={200}
-          className="object-cover w-full h-[200px]"
+          className="object-cover group-hover:scale-105 transition-transform duration-300 w-full h-[200px]"
         />
       </div>
 
       {/* 🛍️ Contenido del producto */}
-      <div className="flex flex-col justify-between p-5 text-white bg-gray-600">
-        <LargeText>{producto.Name}</LargeText>
-        <SubTitle>${producto.Unit_cost}</SubTitle>
-        <SubTitle>{producto.Type}</SubTitle>
-        <p>{producto.Color}</p>
-        <span>{producto.In_stock}</span>
+      <div className="p-4 ">
+        <h3 className="text-lg font-semibold text-gray-800 transition-colors group-hover:text-blue-600">
+          {producto.Name}
+        </h3>
+        <p className="mt-1 mb-2 text-sm text-gray-600">${producto.Unit_cost}</p>
+
+        <span
+          className={`inline-block px-2 py-1 text-xs font-medium rounded-full ${
+            producto.In_stock
+              ? "bg-green-100 text-green-700"
+              : "bg-red-200 text-red-800"
+          }`}
+        >
+          {" "}
+          {producto.In_stock ? "En stock" : "Sin stock"}
+        </span>
       </div>
     </div>
   );
