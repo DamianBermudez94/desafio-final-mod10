@@ -12,11 +12,11 @@ export const ProfilePage: React.FC<Props> = ({ children }) => {
   const { data, error } = useSWR("/me", fetchApi);
 
   return (
-    <ProfilePageWrapper>
-      <ProfileTitleWrapper>
-        <Title>Perfil</Title>
-      </ProfileTitleWrapper>
+    <div className="flex flex-col justify-between w-0.5 gap-10">
+      <div>
+        <h2>Perfil</h2>
+      </div>
       <ProfileForm data={data}></ProfileForm>
-    </ProfilePageWrapper>
+    </div>
   );
 };

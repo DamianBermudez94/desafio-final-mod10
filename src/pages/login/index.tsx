@@ -7,7 +7,7 @@ const Login: NextPage = () => {
   return (
     <Layout form={false}>
       <Head>
-        <title>Login - Compralo</title>
+        <title>Inicio de seccion</title>
       </Head>
       <LoginPage></LoginPage>
     </Layout>

@@ -7,7 +7,7 @@ import { Mail } from "lucide-react";
 import { MapPinCheckInside } from "lucide-react";
 export const Footer: React.FC = () => {
   return (
-    <footer className="flex flex-col items-center justify-between w-full h-auto bg-neutral-100">
+    <footer className="flex flex-col items-center justify-between w-full h-auto bg-gray-50">
       <div className="flex items-center justify-around w-full gap-5 mt-4">
         <div className="">
           <p className="flex gap-2 pt-1">

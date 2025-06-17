@@ -12,16 +12,12 @@ export const Header: React.FC<Props> = (props) => {
     setFlag(!flag);
   }
   return (
-    <div
-      className={`${props.sticky ? "sticky top-0 z-20 bg-white" : "static"}`}
+    <header
+      className={
+        "w-full h-auto px-11 flex flex-wrap justify-center items-center m-auto bg-white shadow-md"
+      }
     >
-      <header
-        className={
-          "w-full h-auto z-20 px-11 flex flex-wrap justify-center items-center m-auto bg-white shadow-md"
-        }
-      >
-        <SideBar toggle={toggleMenu} show={flag} />
-      </header>
-    </div>
+      <SideBar toggle={toggleMenu} show={flag} />
+    </header>
   );
 };

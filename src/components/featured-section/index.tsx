@@ -9,12 +9,12 @@ type Props = {
 
 export const FeaturedSection: React.FC<Props> = ({ children, data }) => {
   return (
-    <section className="p-10 bg-amber-50">
+    <section className="p-10 bg-gray-50">
       <div className="pb-6 text-center">
         <h2 className="text-4xl font-bold">Conoce nuestros productos</h2>
       </div>
 
-      <div className="flex flex-col flex-wrap items-center justify-center gap-5 bg-amber-50 md:flex-row">
+      <div className="flex flex-col flex-wrap items-center justify-center gap-5 md:flex-row">
         {data?.results?.length ? (
           data.results.map((product) => (
             <ProductCard key={product.objectID} producto={product} />
