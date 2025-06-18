@@ -119,8 +119,8 @@ export const HomePage: React.FC<Props> = ({ data }) => {
         objectPosition="center"
         overlayColor="black"
         overlayOpacity={0.6}
-        strength={400}
-        height="80vh"
+        strength={500}
+        height="70vh"
       >
         <div className="py-12 text-center text-white bg-transparent rounded-xl">
           <h2 className="mb-4 text-3xl font-bold">¿Listo para comprar?</h2>

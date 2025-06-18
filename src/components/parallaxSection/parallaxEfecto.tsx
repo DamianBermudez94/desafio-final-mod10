@@ -36,7 +36,7 @@ const ParallaxSection = ({
       }}
     >
       <div
-        className="relative flex items-center justify-center w-full px-6 text-center text-white"
+        className="relative top-0 flex items-center justify-center w-full px-6 text-center text-white"
         style={{ height }}
       >
         <div
