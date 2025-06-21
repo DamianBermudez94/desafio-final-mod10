@@ -40,7 +40,7 @@ const ParallaxSection = ({
         style={{ height }}
       >
         <div
-          className="absolute inset-0"
+          className="absolute top-0 inset-0"
           style={{ backgroundColor: overlayColor, opacity: overlayOpacity }}
         />
         <motion.div
